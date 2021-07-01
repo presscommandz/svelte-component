@@ -1,6 +1,6 @@
 {
   "name": "@presscommandz/svelte-component",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "provide svelte component",
   "main": "index.js",
   "scripts": {
