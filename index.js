@@ -1,4 +1,3 @@
-import { Button } from "./src/button";
-
-
-export default { Button }
+module.exports = {
+    Button: require('./src/button/index')
+}

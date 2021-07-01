@@ -1,17 +1,17 @@
 <script>
-	import Button from "../../src/button/Button.svelte";
+	import Button from '@presscommandz/svelte-component/src/button/Button.svelte'
 
 	export let name;
 
 	function Alert() {
 		console.log('fire!')
-		alert('Hello!')
+		alert('Hello World!')
 	}
 </script>
 
 <main>
-	<h1>Hello {name} 123!</h1>
-	<Button onClick={Alert} content="Click me"/>
+	<h1>Hello {name}!</h1>
+	<Button onClick={Alert} content="Click me 123"/>
 </main>
 
 <style>
