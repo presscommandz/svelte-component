@@ -1,3 +1,4 @@
-import Button from './src/components/button'
+import { Button } from "./src/button";
 
-module.exports = { Button }
+
+export default { Button }
