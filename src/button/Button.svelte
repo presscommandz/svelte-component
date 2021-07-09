@@ -8,6 +8,7 @@
         background-color: #50d9ff;
         border-radius: 5px;
         border: transparent;
+        padding: 1em 2em;
     }
 
     button:active {
