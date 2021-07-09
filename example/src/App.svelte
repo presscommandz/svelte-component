@@ -1,8 +1,9 @@
 <script>
-	import Card from '../../src/promotion/Card.svelte';
-	const log = _ => console.log('hi')
+	import Card from "../../src/promotion/Card.svelte";	
 </script>
 
 <main>
-	<Card price="9$/ month" onClick={log}/>
+	<Card price="9$/ month"/>
 </main>
+
+
