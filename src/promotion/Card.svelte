@@ -4,6 +4,20 @@
     export let drawbacks = ["Some diagrams", "Unlimitted contributors"]
     export let advances = ["All other features"]
     export let onClick
+    export let type = "primary"
+
+    let backgroundColor;
+    switch(type) {
+        case "primary": {
+            backgroundColor = "#ffffff"
+            break
+        }
+        case "secondary" : {
+            backgroundColor = "#3283da"
+            break
+        }
+        default: break
+    }
 </script>
 <style>
     .container {
@@ -87,7 +101,7 @@
         }
     }
 </style>
-<div class="container">
+<div class="container" style="background: {backgroundColor}">
    <div class="package-header">
        <h2>Pro</h2>
        {#if banner}

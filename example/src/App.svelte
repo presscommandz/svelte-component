@@ -4,5 +4,5 @@
 </script>
 
 <main>
-	<Card price="9$/ month" onClick={log}/>
+	<Card price="9$/ month" onClick={log} type="secondary"/>
 </main>
