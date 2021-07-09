@@ -3,6 +3,7 @@
     export let price
     export let drawbacks = ["Some diagrams", "Unlimitted contributors"]
     export let advances = ["All other features"]
+    export let onClick
 </script>
 <style>
     .container {
@@ -13,6 +14,7 @@
         width: 300px;
         border-radius: 5px;
         box-shadow: 2px 2px 20px 6px #dbdbdb;
+        transition: 300ms;
     }
     .container .package-header h2 {
         margin-top: 10px;
@@ -44,11 +46,12 @@
         width: 16px;
         height: 16px;
     }
-    .button {
+    .btn {
         margin-top: 40px;
         margin-bottom: 30px;
-        width: 60%;
+        width: 65%;
         padding: 5px;
+        border: transparent;
         border-radius: 10px;
         color: #f3f8f3;
         font-size: 32px;
@@ -57,8 +60,9 @@
         background: #79af7e;
         transition: 300ms;
         cursor: pointer;
+        outline: none;
     }
-    .button:hover {
+    .btn:hover {
         background: #6ea774;
     }
 
@@ -76,7 +80,7 @@
             width: 90%;
             margin: 5px;
         }
-        .button {
+        .btn {
             margin-top: 40px;
             margin-bottom: 20px;
             font-size: 24px;
@@ -105,7 +109,7 @@
             </span>
         {/each}
    </div>
-   <div class="button">
-        Get Pro
-   </div>
+   <button class="btn" on:click={onClick}>
+        Get pro
+   </button>
 </div>
