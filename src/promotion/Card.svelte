@@ -29,7 +29,7 @@
         margin-block-end: 0.3em;
     }
     .feature {
-        width: 75%;
+        width: 80%;
         margin: 10px;
         display: flex;
         flex-wrap: nowrap;
@@ -77,7 +77,7 @@
             font-size: 40px;
         }
         .feature {
-            width: 90%;
+            width: 85%;
             margin: 5px;
         }
         .btn {
