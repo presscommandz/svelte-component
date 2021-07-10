@@ -1,4 +1,3 @@
-import Pricing from './src/promotion/Pricing.svelte'
-import Card from './src/promotion/Card.svelte'
+const greeting = () => console.log('hello world!')
 
-export { Pricing, Card }
+export { greeting }
