@@ -21,6 +21,7 @@
 </script>
 <style>
     .container {
+        margin: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -80,9 +81,10 @@
         background: #6ea774;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
         .container {
             width: 240px;
+            margin: 5px;
         }
         .container .package-header h2 {
             font-size: 24px;
