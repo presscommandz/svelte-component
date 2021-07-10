@@ -1,5 +1,5 @@
 <script>
-	import { Pricing, Card } from '../../index'
+	import { Pricing, Card } from '@presscommandz/svelte-component'
 </script>
 
 <main>
