@@ -1,0 +1,23 @@
+{
+  "name": "@presscommandz/svelte-component",
+  "version": "0.1.0",
+  "description": "provide svelte component",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/presscommandz/svelte-component.git"
+  },
+  "keywords": [],
+  "author": "PressCommandZ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/presscommandz/svelte-component/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "homepage": "https://github.com/presscommandz/svelte-component#readme",
+  "dependencies": {
+    "svelte-preprocess": "^4.7.3"
+  }
+}
