@@ -1,3 +1,3 @@
-const greeting = () => console.log('hello world!')
+const greeting = () => console.log("hello world!");
 
-export { greeting }
+module.exports = { greeting };
