@@ -17,3 +17,12 @@ Access Token: avatar => Your profile => Developer settings => Personal access to
 ## Install package
 
 `npm install @presscommandz/svelte-component`
+
+## Run and Test package
+
+Open example
+
+`yarn install`
+`yarn run dev`
+
+Visit localhost:5000 to see the result
