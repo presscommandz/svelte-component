@@ -1,3 +1,4 @@
-module.exports = {
-    Button: require('./src/button/index')
-}
+import Pricing from './src/promotion/Pricing.svelte'
+import Card from './src/promotion/Card.svelte'
+
+export { Pricing, Card }

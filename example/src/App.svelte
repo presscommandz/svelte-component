@@ -1,6 +1,5 @@
 <script>
-	import Card from "../../src/promotion/Card.svelte";	
-	import Pricing from "../../src/promotion/Pricing.svelte";
+	import { Pricing, Card } from '../../index'
 </script>
 
 <main>
