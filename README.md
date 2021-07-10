@@ -1,20 +1,19 @@
 # svelte-component
+
 provide svelte component
 
-I.install module
+# Installation
 
-1. authenticate
+## Authenticate
 
-$ npm login --scope=@presscommandz --registry=https://npm.pkg.github.com
+`$ npm login --scope=@presscommandz --registry=https://npm.pkg.github.com`
 
->Username: Username
->Password: Access Token
->Email: PUBLIC-EMAIL-ADDRESS
+> Username: Username
+> Password: Access Token
+> Email: PUBLIC-EMAIL-ADDRESS
 
 Access Token: avatar => Your profile => Developer settings => Personal access tokens
 
-2. install
+## Install package
 
-npm install @presscommandz/svelte-component@<version>
-
-Example: npm install @presscommandz/svelte-component@1.0.41
+`npm install @presscommandz/svelte-component`
