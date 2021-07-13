@@ -119,3 +119,6 @@ dist
 
 # Output lib
 lib
+
+# Example directories
+example/svelte/public/build
