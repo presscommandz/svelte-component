@@ -6,23 +6,31 @@ provide svelte component
 
 ## Authenticate
 
-`$ npm login --scope=@presscommandz --registry=https://npm.pkg.github.com`
+To login into Github private registry, run this command in command line:
 
-> Username: Username
+```bash
+$ npm login --scope=@presscommandz --registry=https://npm.pkg.github.com
+
+> Username: Github username
 > Password: Access Token
 > Email: PUBLIC-EMAIL-ADDRESS
+```
 
-Access Token: avatar => Your profile => Developer settings => Personal access tokens
+Access Token can be created in `Avatar => Your profile => Developer settings => Personal access tokens`
 
-## Install package
+## Publish package
 
-`npm install @presscommandz/svelte-component`
+```bash
+npm publish
+```
 
-## Run and Test package
+## Run and test published package
 
-Open example
+There are 3 subdirectory inside directory `example` corresponding to 3 way to import package (CommonJS, ESModule and using Webpack + Svelte). In each directory, type those command to run example:
 
-`yarn install`
-`yarn run dev`
+```bash
+yarn install
+yarn dev
+```
 
-Visit localhost:5000 to see the result
+In directory `svelte`, visit <http://localhost:5000> to see the run result.
