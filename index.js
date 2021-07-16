@@ -1,4 +1,4 @@
-import Pricing from './src/promotion/Pricing.svelte'
-import Card from './src/promotion/Card.svelte'
+import Promotion from './src/promotion/Promotion.svelte'
+import Plan from './src/promotion/Plan.svelte'
 
-export { Pricing, Card }
+export { Promotion, Plan }

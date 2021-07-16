@@ -22,6 +22,6 @@
   "homepage": "https://github.com/presscommandz/svelte-component#readme",
   "dependencies": {
     "@presscommandz/svelte-component": "^1.0.0",
-    "svelte-preprocess": "^4.7.3"
+    "svelte-preprocess": "^4.7.4"
   }
 }
