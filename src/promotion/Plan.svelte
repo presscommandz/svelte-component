@@ -22,6 +22,9 @@
     }
 </script>
 <style>
+    .card {
+        
+    }
     .container {
         margin: 20px;
         display: flex;

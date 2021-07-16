@@ -16,6 +16,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        perspective: 1000px;
     }
     .container .header {
         text-align: center;
