@@ -1,13 +1,9 @@
 <script>
+    import PromotionViewModel from './PromotionViewModel'
     export let title = "Hello"
     export let subtitle = "World"
     export let note = "what's up ?"
-    let isMonthly = true
-    
-    const onChange = _ => {
-        isMonthly = !isMonthly
-    }
-    console.log(isMonthly)
+    const viewModel = new PromotionViewModel()
 </script>
 
 <style>
@@ -16,7 +12,6 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        perspective: 1000px;
     }
     .container .header {
         text-align: center;
@@ -124,8 +119,8 @@
         <span class="monthly">monthly</span>
         <div>
             <label class="switch-round">
-                <input type="checkbox" checked={!isMonthly}/>
-                <span class="slider" on:click={_ => onChange()} />
+                <input type="checkbox" checked={!viewModel.isMonthly} on:click={_ => viewModel.flip()}/>
+                <span class="slider"/>
             </label>
         </div>
         <span class="yearly">yearly</span>
