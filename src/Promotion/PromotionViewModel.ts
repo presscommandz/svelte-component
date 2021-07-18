@@ -1,6 +1,6 @@
 export default class PromotionViewModel {
     isMonthly: boolean
-    listCard: any
+    listCard: HTMLElement
     constructor() {
         this.isMonthly = true
         this.listCard = document.getElementsByClassName('flip-card-inner')
