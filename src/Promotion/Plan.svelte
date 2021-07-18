@@ -48,8 +48,6 @@
         width: 100%;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
-    }
-    .flip-card-general {
         display: flex;
         flex-direction: column;
         justify-content: center;
