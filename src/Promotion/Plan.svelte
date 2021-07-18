@@ -71,6 +71,9 @@
         margin-block-start: 0.3em;
         margin-block-end: 0.3em;
     }
+    .flip-card-general .cost span {
+        color: #4fb6e0;
+    }
     .flip-card-general .feature {
         width: 80%;
         margin: 10px;
@@ -145,7 +148,7 @@
                 {/if}
             </div>
             <div class="cost">
-                 <h1>{price}</h1>
+                 <h1>{price}$/ <span>month</span></h1>
             </div>
             <div class="feature">
                  {#each advances as advance}
@@ -167,7 +170,7 @@
                 {/if}
             </div>
             <div class="cost">
-                 <h1>100$/ years</h1>
+                 <h1>{Number(price) * 12 - 10}$/ <span>year</span></h1>
             </div>
             <div class="feature">
                  {#each advances as advance}

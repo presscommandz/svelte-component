@@ -1,9 +1,12 @@
 <script>
     import PromotionViewModel from './PromotionViewModel'
+    import { onMount, onDestroy } from "svelte"
     export let title = "Hello"
     export let subtitle = "World"
     export let note = "what's up ?"
     const viewModel = new PromotionViewModel()
+    onMount(() => viewModel.onMount())
+    onDestroy(() => viewModel.onDestroy())
 </script>
 
 <style>
