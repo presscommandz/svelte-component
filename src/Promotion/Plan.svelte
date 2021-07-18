@@ -1,10 +1,12 @@
 <script>
+    export let title
     export let isMonthly
     export let banner = false
     export let price
     export let drawbacks = ["Some diagrams", "Unlimitted contributors"]
     export let advances = ["All other features"]
     export let onClick
+    export let textButton
     export let type = "primary"
 
     let backgroundColor;
@@ -137,7 +139,7 @@
     <div class="flip-card-inner">
         <div class="flip-card-general flip-card-front">
             <div class="package-header">
-                <h2>Pro</h2>
+                <h2>{title || 'Free'}</h2>
                 {#if banner}
                      <div class="banner">{"popular"}</div>
                 {/if}
@@ -154,12 +156,12 @@
                  {/each}
             </div>
             <button class="btn" on:click={onClick}>
-                 Get pro
+                {textButton || 'Get Free'}
             </button>
         </div>
         <div class="flip-card-general flip-card-back">
             <div class="package-header">
-                <h2>Pro</h2>
+                <h2>{title || 'Free'}</h2>
                 {#if banner}
                      <div class="banner">{"popular"}</div>
                 {/if}
@@ -176,7 +178,7 @@
                  {/each}
             </div>
             <button class="btn" on:click={onClick}>
-                 Get pro
+                 {textButton || 'Get Free'}
             </button>
         </div>
     </div>
