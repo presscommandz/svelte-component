@@ -20,7 +20,7 @@
         "url": "https://github.com/presscommandz/svelte-component/issues"
     },
     "scripts": {
-        "build": "rimraf lib && rollup -c",
+        "build": "rimraf lib && rollup -c && tsc --emitDeclarationOnly",
         "prepublishOnly": "yarn build"
     },
     "publishConfig": {
@@ -30,7 +30,7 @@
     "dependencies": {},
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^13.0.0",
-        "@rollup/plugin-typescript": "^8.2.1",
+        "@rollup/plugin-typescript": "^8.2.3",
         "@tsconfig/svelte": "^2.0.1",
         "@typescript-eslint/eslint-plugin": "^4.28.3",
         "@typescript-eslint/parser": "^4.28.3",
@@ -42,7 +42,6 @@
         "rollup-plugin-css-only": "^3.1.0",
         "rollup-plugin-svelte": "^7.1.0",
         "rollup-plugin-terser": "^7.0.2",
-        "rollup-plugin-typescript2": "^0.30.0",
         "svelte": "^3.38.3",
         "svelte-loader": "^3.1.2",
         "svelte-preprocess": "^4.7.4",

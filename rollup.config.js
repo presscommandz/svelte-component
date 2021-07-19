@@ -2,7 +2,7 @@ import svelte from "rollup-plugin-svelte"
 import resolve from "@rollup/plugin-node-resolve"
 import pkg from "./package.json"
 import autoPreprocess from "svelte-preprocess"
-import typescript from "rollup-plugin-typescript2"
+import typescript from "@rollup/plugin-typescript"
 import css from "rollup-plugin-css-only"
 
 const name = pkg.name
@@ -21,10 +21,7 @@ export default {
             preprocess: autoPreprocess()
         }),
         css({ output: "bundle.css" }),
-        typescript({
-            sourceMap: true,
-            useTsconfigDeclarationDir: true
-        }),
+        typescript(),
         resolve()
     ]
 }

@@ -1,8 +1,8 @@
 <script>
-    import PromotionViewModel from './PromotionViewModel'
+    import PromotionViewModel from "./PromotionViewModel"
     import { onMount, onDestroy } from "svelte"
     export let props = {}
-    const viewModel = new PromotionViewModel({...props})
+    const viewModel = new PromotionViewModel({ ...props })
     onMount(() => viewModel.onMount())
     onDestroy(() => viewModel.onDestroy())
 </script>
@@ -19,13 +19,13 @@
     }
     .container .header h1 {
         font-size: 64px;
-        margin-block-start: .3em;
+        margin-block-start: 0.3em;
         color: #4fb6e0;
         font-weight: 100;
     }
     .container .header h2 {
         font-size: 40px;
-        margin-block-end: .3em;
+        margin-block-end: 0.3em;
         font-weight: 100;
     }
     .container .header h3 {
@@ -120,8 +120,12 @@
         <span class="monthly">monthly</span>
         <div>
             <label class="switch-round">
-                <input type="checkbox" checked={!viewModel.isMonthly} on:click={_ => viewModel.flip()}/>
-                <span class="slider"/>
+                <input
+                    type="checkbox"
+                    checked={!viewModel.isMonthly}
+                    on:click={_ => viewModel.flip()}
+                />
+                <span class="slider" />
             </label>
         </div>
         <span class="yearly">yearly</span>
