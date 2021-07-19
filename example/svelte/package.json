@@ -17,6 +17,6 @@
         "dev": "webpack serve --content-base public"
     },
     "dependencies": {
-        "@presscommandz/svelte-component": "^0.2.0"
+        "@presscommandz/svelte-component": "../../"
     }
 }
