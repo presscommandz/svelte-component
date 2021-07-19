@@ -1,15 +1,26 @@
 <script>
-    import { Promotion, Plan } from "@presscommandz/svelte-component"
+    import { Promotion, Card, Plan } from "@presscommandz/svelte-component"
+
     let props = {
         title: "Find the right plan",
         subtitle: "Join the revolution",
         note :"Flexible pricing options for freelancers and design teams.",
         isMonthly: true
     }
+
+    let isFlipped = false
+
+    const flip = _ => isFlipped = !isFlipped
 </script>
 
-<Promotion props={props}>
-    <Plan price="9" />
-    <Plan price="9"/>
-    <Plan price="9"/>
+<Promotion props={props} onFlip={flip} isFlipped={isFlipped}>
+    <Card isFlipped={isFlipped}>
+        <Plan />
+    </Card>
+    <Card isFlipped={isFlipped}>
+        <Plan />
+    </Card>
+    <Card isFlipped={isFlipped}>
+        <Plan />
+    </Card>
 </Promotion>

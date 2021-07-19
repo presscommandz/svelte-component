@@ -2,6 +2,8 @@
     import PromotionViewModel from "./PromotionViewModel"
     import { onMount, onDestroy } from "svelte"
     export let props = {}
+    export let onFlip
+    export let isFlipped
     const viewModel = new PromotionViewModel({ ...props })
     onMount(() => viewModel.onMount())
     onDestroy(() => viewModel.onDestroy())
@@ -122,8 +124,8 @@
             <label class="switch-round">
                 <input
                     type="checkbox"
-                    checked={!viewModel.isMonthly}
-                    on:click={_ => viewModel.flip()}
+                    checked={isFlipped}
+                    on:click={onFlip}
                 />
                 <span class="slider" />
             </label>
