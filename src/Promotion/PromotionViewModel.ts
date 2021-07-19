@@ -11,20 +11,22 @@ export default class PromotionViewModel {
         const { isMonthly } = props
         this.promotionData = new PromotionModel(props)
         this.isMonthly = writable(isMonthly)
-        this.listCard = document.getElementsByClassName('flip-card-inner')
+        this.listCard = document.getElementsByClassName("flip-card-inner")
     }
 
     flip() {
         this.isMonthly.update(x => !x)
     }
     onMount() {
-      this.unsubcribeIsMonthly = this.isMonthly.subscribe(x => {
-        for(let i = 0; i < this.listCard.length; i++) {
-          this.listCard[i].style.transform = `rotateY(${x ? '0' : '180deg'})`
-        }
-      })
+        this.unsubcribeIsMonthly = this.isMonthly.subscribe(x => {
+            for (let i = 0; i < this.listCard.length; i++) {
+                this.listCard[i].style.transform = `rotateY(${
+                    x ? "0" : "180deg"
+                })`
+            }
+        })
     }
     onDestroy() {
-      this.unsubcribeIsMonthly()
+        this.unsubcribeIsMonthly()
     }
 }
