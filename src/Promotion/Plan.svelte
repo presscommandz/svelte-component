@@ -9,23 +9,21 @@
     export let textButton
     export let type = "primary"
 
-    let backgroundColor;
-    switch(type) {
+    let backgroundColor
+    switch (type) {
         case "primary": {
             backgroundColor = "#ffffff"
             break
         }
-        case "secondary" : {
+        case "secondary": {
             backgroundColor = "#3283da"
             break
         }
-        default: break
+        default:
+            break
     }
-    var card = document.getElementsByClassName('card');
-    function click() {
-        card.classList.toggle('is-flipped');
-    }
-    
+
+    export let isFlipped = false
 </script>
 
 <style>
@@ -36,17 +34,16 @@
         height: 500px;
         margin: 20px;
     }
-  
+
     .flip-card-inner {
         position: relative;
         width: 100%;
         text-align: center;
         transition: transform 0.6s;
         transform-style: preserve-3d;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
-  
     .flip-card-general {
         position: absolute;
         width: 100%;
@@ -61,7 +58,7 @@
         transition: 300ms;
         box-shadow: 2px 2px 20px 6px #dbdbdb;
     }
-  
+
     .flip-card-general .package-header h2 {
         margin-bottom: 5px;
         font-size: 32px;
@@ -111,7 +108,7 @@
     .flip-card-general .btn:hover {
         background: #6ea774;
     }
-  
+
     .flip-card-back {
         transform: rotateY(180deg);
     }
@@ -140,101 +137,101 @@
         }
     }
     .scene {
-  width: 200px;
-  height: 260px;
-  border: 1px solid #CCC;
-  margin: 40px 0;
-  perspective: 600px;
-}
+        width: 200px;
+        height: 260px;
+        border: 1px solid #ccc;
+        margin: 40px 0;
+        perspective: 600px;
+    }
 
-.card {
-  width: 100%;
-  height: 100%;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  cursor: pointer;
-  position: relative;
-}
+    .card {
+        width: 100%;
+        height: 100%;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        position: relative;
+    }
 
-.card .is-flipped {
-  transform: rotateY(180deg);
-}
+    .isFlipped {
+        transform: rotateY(180deg);
+    }
 
-.card__face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  line-height: 260px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
+    .card__face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        line-height: 260px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 40px;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
 
-.card__face--front {
-  background: red;
-}
+    .card__face--front {
+        background: red;
+    }
 
-.card__face--back {
-  background: blue;
-  transform: rotateY(180deg);
-}
-
+    .card__face--back {
+        background: blue;
+        transform: rotateY(180deg);
+    }
 </style>
-<div class="flip-card">
+
+<!-- <div class="flip-card">
     <div class="flip-card-inner">
         <div class="flip-card-general flip-card-front">
             <div class="package-header">
-                <h2>{title || 'Free'}</h2>
+                <h2>{title || "Free"}</h2>
                 {#if banner}
-                     <div class="banner">{"popular"}</div>
+                    <div class="banner">{"popular"}</div>
                 {/if}
             </div>
             <div class="cost">
-                 <h1>{price}$/ <span>month</span></h1>
+                <h1>{price}$/ <span>month</span></h1>
             </div>
             <div class="feature">
-                 {#each advances as advance}
-                     <span>+ {advance}</span>
-                 {/each}
-                 {#each drawbacks as drawback}
-                     <span>- {drawback}</span>
-                 {/each}
+                {#each advances as advance}
+                    <span>+ {advance}</span>
+                {/each}
+                {#each drawbacks as drawback}
+                    <span>- {drawback}</span>
+                {/each}
             </div>
             <button class="btn" on:click={onClick}>
-                {textButton || 'Get Free'}
+                {textButton || "Get Free"}
             </button>
         </div>
         <div class="flip-card-general flip-card-back">
             <div class="package-header">
-                <h2>{title || 'Free'}</h2>
+                <h2>{title || "Free"}</h2>
                 {#if banner}
-                     <div class="banner">{"popular"}</div>
+                    <div class="banner">{"popular"}</div>
                 {/if}
             </div>
             <div class="cost">
-                 <h1>{Number(price) * 12 - 10}$/ <span>year</span></h1>
+                <h1>{Number(price) * 12 - 10}$/ <span>year</span></h1>
             </div>
             <div class="feature">
-                 {#each advances as advance}
-                     <span>+ {advance}</span>
-                 {/each}
-                 {#each drawbacks as drawback}
-                     <span>- {drawback}</span>
-                 {/each}
+                {#each advances as advance}
+                    <span>+ {advance}</span>
+                {/each}
+                {#each drawbacks as drawback}
+                    <span>- {drawback}</span>
+                {/each}
             </div>
             <button class="btn" on:click={onClick}>
-                 {textButton || 'Get Free'}
+                {textButton || "Get Free"}
             </button>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="scene scene--card">
-    <div class="card" on:click={_ => click()}>
-      <div class="card__face card__face--front">front</div>
-      <div class="card__face card__face--back">back</div>
+    <div class="card" class:isFlipped>
+        <div class="card__face card__face--front">front</div>
+        <div class="card__face card__face--back">back</div>
     </div>
-  </div>
+</div>
