@@ -1,5 +1,15 @@
-<script lang="typescript">
-    import { Button, hello } from "@presscommandz/svelte-component"
+<script>
+    import { Promotion, Plan } from "@presscommandz/svelte-component"
+    let props = {
+        title: "Find the right plan",
+        subtitle: "Join the revolution",
+        note :"Flexible pricing options for freelancers and design teams.",
+        isMonthly: true
+    }
 </script>
 
-<Button id="btn" w="40" h="40"><p>{hello()}</p></Button>
+<Promotion props={props}>
+    <Plan price="9" />
+    <Plan price="9"/>
+    <Plan price="9"/>
+</Promotion>
