@@ -1,10 +1,8 @@
 <script>
     import PromotionViewModel from './PromotionViewModel'
     import { onMount, onDestroy } from "svelte"
-    export let title = "Hello"
-    export let subtitle = "World"
-    export let note = "what's up ?"
-    const viewModel = new PromotionViewModel()
+    export let props = {}
+    const viewModel = new PromotionViewModel({...props})
     onMount(() => viewModel.onMount())
     onDestroy(() => viewModel.onDestroy())
 </script>
@@ -114,9 +112,9 @@
 
 <div class="container">
     <div class="header">
-        <h2>{subtitle}</h2>
-        <h1>{title}</h1>
-        <h3>{note}</h3>
+        <h2>{viewModel.promotionData.subtitle}</h2>
+        <h1>{viewModel.promotionData.title}</h1>
+        <h3>{viewModel.promotionData.note}</h3>
     </div>
     <div class="box">
         <span class="monthly">monthly</span>

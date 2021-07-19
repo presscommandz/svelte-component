@@ -1,6 +1,6 @@
 <script>
     export let title
-    export let isMonthly
+
     export let banner = false
     export let price
     export let drawbacks = ["Some diagrams", "Unlimitted contributors"]
@@ -20,6 +20,10 @@
             break
         }
         default: break
+    }
+    var card = document.getElementsByClassName('card');
+    function click() {
+        card.classList.toggle('is-flipped');
     }
     
 </script>
@@ -135,6 +139,49 @@
             font-size: 24px;
         }
     }
+    .scene {
+  width: 200px;
+  height: 260px;
+  border: 1px solid #CCC;
+  margin: 40px 0;
+  perspective: 600px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card .is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__face--front {
+  background: red;
+}
+
+.card__face--back {
+  background: blue;
+  transform: rotateY(180deg);
+}
+
 </style>
 <div class="flip-card">
     <div class="flip-card-inner">
@@ -185,3 +232,9 @@
     </div>
 </div>
 
+<div class="scene scene--card">
+    <div class="card" on:click={_ => click()}>
+      <div class="card__face card__face--front">front</div>
+      <div class="card__face card__face--back">back</div>
+    </div>
+  </div>
