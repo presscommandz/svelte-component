@@ -19,6 +19,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        overflow: hidden;
     }
     .container .header {
         text-align: center;
@@ -142,12 +143,12 @@
                 <Plan slot="back" title="Free(year)" />
             </Card>
             <Card {isFlipped}>
-                <Plan slot="front" />
-                <Plan slot="back" title="Free(year)" />
+                <Plan slot="front" title="Pro" />
+                <Plan slot="back" title="Pro(year)" />
             </Card>
             <Card {isFlipped}>
-                <Plan slot="front" />
-                <Plan slot="back" title="Free(year)" />
+                <Plan slot="front" title="Lifetime" />
+                <Plan slot="back" title="Lifetime(year)" />
             </Card>
         </Carousel>
     {:else}
@@ -157,12 +158,12 @@
                 <Plan slot="back" title="Free(year)" />
             </Card>
             <Card {isFlipped}>
-                <Plan slot="front" />
-                <Plan slot="back" title="Free(year)" />
+                <Plan slot="front" title="Pro" />
+                <Plan slot="back" title="Pro(year)" />
             </Card>
             <Card {isFlipped}>
-                <Plan slot="front" />
-                <Plan slot="back" title="Free(year)" />
+                <Plan slot="front" title="Lifetime" />
+                <Plan slot="back" title="Lifetime(year)" />
             </Card>
         </div>
     {/if}

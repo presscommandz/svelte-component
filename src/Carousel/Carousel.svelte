@@ -3,7 +3,12 @@
     import CarouselViewModel from "./CarouselViewModel"
     import "swiper/swiper-bundle.min.css"
 
-    const viewModel = new CarouselViewModel({})
+    const viewModel = new CarouselViewModel({
+        isFlex: true,
+        pagination: {
+            el: ".swiper-pagination"
+        }
+    })
 
     onMount(() => viewModel.onMount())
     onDestroy(() => viewModel.onDestroy())
@@ -11,7 +16,7 @@
 
 <style>
     .swiper-pagination {
-        width: 100%;
+        width: 100% !important;
         margin: 5px;
     }
 

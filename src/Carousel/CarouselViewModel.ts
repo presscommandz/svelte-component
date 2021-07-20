@@ -5,12 +5,13 @@ export default class CarouselViewModel {
     swiperController: Swiper
     slidePerView: number
     showAdjacentSlideEdge: boolean
+    slideWidth: string
     loop: boolean
-    autoplay: Object
+    autoplay: boolean
     isFlex: boolean
     pagination: boolean
 
-    constructor(object: any) {
+    constructor(object) {
         const {
             slidePerView,
             showAdjacentSlideEdge,
@@ -21,9 +22,9 @@ export default class CarouselViewModel {
         } = object
         this.slidePerView = slidePerView || 1.2
         this.showAdjacentSlideEdge = showAdjacentSlideEdge || true
-        this.autoplay = autoplay || false
+        this.autoplay = autoplay || true
         this.isFlex = isFlex || false
-        this.loop = loop || false
+        this.loop = loop || true
         this.pagination = pagination || false
     }
 
@@ -47,7 +48,7 @@ export default class CarouselViewModel {
                 // Assuming element has same margin and padding in left and right side
                 // Show 16px of each adjacent slide
                 item.style.width = this.isFlex
-                    ? "250px"
+                    ? "254px"
                     : `calc(100% / ${this.slidePerView} - 2 * (${marginX} + ${paddingX}) - 2 * 16px)`
             })
         }

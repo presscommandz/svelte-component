@@ -13,17 +13,4 @@
     const flip = _ => (isFlipped = !isFlipped)
 </script>
 
-<Promotion {props} onFlip={flip} {isFlipped}>
-    <Card {isFlipped}>
-        <Plan slot="front" />
-        <Plan slot="back" title="Free(year)" />
-    </Card>
-    <Card {isFlipped}>
-        <Plan slot="front" />
-        <Plan slot="back" title="Free(year)" />
-    </Card>
-    <Card {isFlipped}>
-        <Plan slot="front" />
-        <Plan slot="back" title="Free(year)" />
-    </Card>
-</Promotion>
+<Promotion {props} onFlip={flip} {isFlipped} />
