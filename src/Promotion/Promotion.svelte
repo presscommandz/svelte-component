@@ -107,6 +107,11 @@
         align-items: center;
         flex-wrap: wrap;
     }
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     @media (max-width: 1023px) {
         .container .header h1 {
             font-size: 48px;
@@ -138,18 +143,24 @@
 
     {#if width <= 576}
         <Carousel>
-            <Card {isFlipped}>
-                <Plan slot="front" />
-                <Plan slot="back" title="Free(year)" />
-            </Card>
-            <Card {isFlipped}>
-                <Plan slot="front" title="Pro" />
-                <Plan slot="back" title="Pro(year)" />
-            </Card>
-            <Card {isFlipped}>
-                <Plan slot="front" title="Lifetime" />
-                <Plan slot="back" title="Lifetime(year)" />
-            </Card>
+            <div class="swiper-slide">
+                <Card {isFlipped}>
+                    <Plan slot="front" />
+                    <Plan slot="back" title="Free(year)" />
+                </Card>
+            </div>
+            <div class="swiper-slide">
+                <Card {isFlipped}>
+                    <Plan slot="front" title="Pro" />
+                    <Plan slot="back" title="Pro(year)" />
+                </Card>
+            </div>
+            <div class="swiper-slide">
+                <Card {isFlipped}>
+                    <Plan slot="front" title="Lifetime" />
+                    <Plan slot="back" title="Lifetime(year)" />
+                </Card>
+            </div>
         </Carousel>
     {:else}
         <div class="pricing">

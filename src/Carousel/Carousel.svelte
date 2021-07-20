@@ -3,29 +3,19 @@
     import CarouselViewModel from "./CarouselViewModel"
     import "swiper/swiper-bundle.min.css"
 
-    const viewModel = new CarouselViewModel({
-        isFlex: true,
-        pagination: {
-            el: ".swiper-pagination"
-        }
-    })
-
+    const viewModel = new CarouselViewModel({})
     onMount(() => viewModel.onMount())
     onDestroy(() => viewModel.onDestroy())
 </script>
 
 <style>
-    .swiper-pagination {
-        width: 100% !important;
-        margin: 5px;
-    }
-
-    .footer {
-        height: 40px;
+    .swiper-container {
+        width: 100%;
+        height: 100%;
     }
 </style>
 
-<div class="swiper-container" bind:this={viewModel.container}>
+<div class="swiper-container mySwiper">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->

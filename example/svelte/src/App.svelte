@@ -1,5 +1,5 @@
 <script>
-    import { Promotion, Card, Plan } from "@presscommandz/svelte-component"
+    import { Promotion, Carousel } from "@presscommandz/svelte-component"
 
     let props = {
         title: "Find the right plan",
@@ -14,3 +14,4 @@
 </script>
 
 <Promotion {props} onFlip={flip} {isFlipped} />
+<Carousel />

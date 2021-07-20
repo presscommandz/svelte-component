@@ -1,72 +1,27 @@
 import Swiper from "swiper/bundle"
 
 export default class CarouselViewModel {
-    container: HTMLElement
+    mySwiper: HTMLElement
     swiperController: Swiper
-    slidePerView: number
-    showAdjacentSlideEdge: boolean
-    slideWidth: string
-    loop: boolean
-    autoplay: boolean
-    isFlex: boolean
-    pagination: boolean
 
-    constructor(object) {
-        const {
-            slidePerView,
-            showAdjacentSlideEdge,
-            autoplay,
-            isFlex,
-            loop,
-            pagination
-        } = object
-        this.slidePerView = slidePerView || 1.2
-        this.showAdjacentSlideEdge = showAdjacentSlideEdge || true
-        this.autoplay = autoplay || true
-        this.isFlex = isFlex || false
-        this.loop = loop || true
-        this.pagination = pagination || false
-    }
+    constructor(options) {}
 
     onMount() {
-        const slidePerView = this.showAdjacentSlideEdge
-            ? "auto"
-            : this.slidePerView
-
-        const children = this.container.querySelectorAll(".swiper-wrapper > *")
-
-        children.forEach((item: HTMLElement) => {
-            item.classList.add("swiper-slide")
-        })
-
-        if (this.showAdjacentSlideEdge) {
-            children.forEach((item: HTMLElement) => {
-                const marginX =
-                    window.getComputedStyle(item).marginLeft || "0px"
-                const paddingX =
-                    window.getComputedStyle(item).paddingLeft || "0px"
-                // Assuming element has same margin and padding in left and right side
-                // Show 16px of each adjacent slide
-                item.style.width = this.isFlex
-                    ? "254px"
-                    : `calc(100% / ${this.slidePerView} - 2 * (${marginX} + ${paddingX}) - 2 * 16px)`
-            })
-        }
-
-        this.swiperController = new Swiper(this.container, {
-            slidesPerColumn: 1,
-            slidesPerView: slidePerView,
+        this.swiperController = new Swiper(".mySwiper", {
+            slidesPerView: 1.3,
             centeredSlides: true,
-            loop: this.loop,
-            loopedSlides: this.slidePerView,
-            autoplay: this.autoplay,
-            pagination: this.pagination
+            loop: true,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination"
+            },
+            autoplay: true
         })
     }
 
     onDestroy() {
         if (this.swiperController) {
-            this.swiperController.destroy()
+            this.swiperController.destroyed
         }
     }
 }

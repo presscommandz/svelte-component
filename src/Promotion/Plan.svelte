@@ -14,6 +14,7 @@
         padding: 20px 5px;
         box-shadow: 0px 2px 20px 2px #d3cfcf;
         border-radius: 10px;
+        text-align: center;
     }
     .package-header h2 {
         font-size: 28px;
@@ -26,7 +27,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin: 10px;
+        margin: 20px;
     }
     .btn {
         width: 80%;
@@ -47,7 +48,7 @@
     }
     @media (max-width: 1023px) {
         .container {
-            width: 220px;
+            width: 220px !important;
             padding: 10px 5px;
         }
         .package-header h2 {
