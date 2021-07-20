@@ -54,11 +54,10 @@
 <div class="scene scene--card">
     <div class="card" class:isFlipped>
         <div class="card__face card__face--front">
-            <slot />
+            <slot name="front" />
         </div>
         <div class="card__face card__face--back">
-            <slot />
+            <slot name="back" />
         </div>
     </div>
 </div>
-

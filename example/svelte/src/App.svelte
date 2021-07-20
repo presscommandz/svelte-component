@@ -4,23 +4,26 @@
     let props = {
         title: "Find the right plan",
         subtitle: "Join the revolution",
-        note :"Flexible pricing options for freelancers and design teams.",
+        note: "Flexible pricing options for freelancers and design teams.",
         isMonthly: true
     }
 
     let isFlipped = false
 
-    const flip = _ => isFlipped = !isFlipped
+    const flip = _ => (isFlipped = !isFlipped)
 </script>
 
-<Promotion props={props} onFlip={flip} isFlipped={isFlipped}>
-    <Card isFlipped={isFlipped}>
-        <Plan />
+<Promotion {props} onFlip={flip} {isFlipped}>
+    <Card {isFlipped}>
+        <Plan slot="front" />
+        <Plan slot="back" title="Free(year)" />
     </Card>
-    <Card isFlipped={isFlipped}>
-        <Plan />
+    <Card {isFlipped}>
+        <Plan slot="front" />
+        <Plan slot="back" title="Free(year)" />
     </Card>
-    <Card isFlipped={isFlipped}>
-        <Plan />
+    <Card {isFlipped}>
+        <Plan slot="front" />
+        <Plan slot="back" title="Free(year)" />
     </Card>
 </Promotion>

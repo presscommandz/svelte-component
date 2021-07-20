@@ -28,7 +28,9 @@
         "registry": "https://npm.pkg.github.com"
     },
     "homepage": "https://github.com/presscommandz/svelte-component#readme",
-    "dependencies": {},
+    "dependencies": {
+        "swiper": "^6.7.5"
+    },
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^13.0.0",
         "@rollup/plugin-typescript": "^8.2.3",

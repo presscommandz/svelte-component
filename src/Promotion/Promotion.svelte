@@ -1,12 +1,16 @@
 <script>
     import PromotionViewModel from "./PromotionViewModel"
+    import Carousel from "../Carousel/Carousel.svelte"
     import { onMount, onDestroy } from "svelte"
+    import Card from "./Card.svelte"
+    import Plan from "./Plan.svelte"
     export let props = {}
     export let onFlip
     export let isFlipped
     const viewModel = new PromotionViewModel({ ...props })
     onMount(() => viewModel.onMount())
     onDestroy(() => viewModel.onDestroy())
+    let width
 </script>
 
 <style>
@@ -112,6 +116,8 @@
     }
 </style>
 
+<svelte:window bind:innerWidth={width} />
+
 <div class="container">
     <div class="header">
         <h2>{viewModel.promotionData.subtitle}</h2>
@@ -122,17 +128,42 @@
         <span class="monthly">monthly</span>
         <div>
             <label class="switch-round">
-                <input
-                    type="checkbox"
-                    checked={isFlipped}
-                    on:click={onFlip}
-                />
+                <input type="checkbox" checked={isFlipped} on:click={onFlip} />
                 <span class="slider" />
             </label>
         </div>
         <span class="yearly">yearly</span>
     </div>
-    <div class="pricing">
-        <slot />
-    </div>
+
+    {#if width <= 576}
+        <Carousel>
+            <Card {isFlipped}>
+                <Plan slot="front" />
+                <Plan slot="back" title="Free(year)" />
+            </Card>
+            <Card {isFlipped}>
+                <Plan slot="front" />
+                <Plan slot="back" title="Free(year)" />
+            </Card>
+            <Card {isFlipped}>
+                <Plan slot="front" />
+                <Plan slot="back" title="Free(year)" />
+            </Card>
+        </Carousel>
+    {:else}
+        <div class="pricing">
+            <Card {isFlipped}>
+                <Plan slot="front" />
+                <Plan slot="back" title="Free(year)" />
+            </Card>
+            <Card {isFlipped}>
+                <Plan slot="front" />
+                <Plan slot="back" title="Free(year)" />
+            </Card>
+            <Card {isFlipped}>
+                <Plan slot="front" />
+                <Plan slot="back" title="Free(year)" />
+            </Card>
+        </div>
+    {/if}
 </div>

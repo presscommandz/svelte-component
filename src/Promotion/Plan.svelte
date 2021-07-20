@@ -10,8 +10,8 @@
 
 <style>
     .container {
-        width: 300px;
-        padding: 20px;
+        width: 280px;
+        padding: 20px 5px;
         box-shadow: 0px 2px 20px 2px #d3cfcf;
         border-radius: 10px;
     }
@@ -20,6 +20,7 @@
     }
     .cost h1 {
         font-size: 42px;
+        font-weight: 200;
     }
     .feature {
         display: flex;
@@ -34,18 +35,20 @@
         border-radius: 10px;
         outline: none;
         margin-top: 40px;
+        margin-bottom: 20px;
         font-size: 24px;
         font-weight: 700;
         background-color: #79af7e;
         color: #ffffff;
+        cursor: pointer;
     }
     .btn:hover {
         background-color: #6ea174;
     }
     @media (max-width: 1023px) {
         .container {
-            width: 240px;
-            padding: 10px;
+            width: 220px;
+            padding: 10px 5px;
         }
         .package-header h2 {
             font-size: 20px;
@@ -57,10 +60,11 @@
             margin: 5px;
         }
         .btn {
-            height: 56px;
+            height: 48px;
         }
     }
 </style>
+
 <div class="container">
     <div class="package-header">
         <h2>{title || "Free"}</h2>
