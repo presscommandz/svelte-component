@@ -1,11 +1,8 @@
 <script>
-    export let title
-    export let banner = false
-    export let price
-    export let drawbacks = ["Some diagrams", "Unlimitted contributors"]
-    export let advances = ["All other features"]
-    export let onClick
-    export let textButton
+    export let props = {}
+    let { title, price, drawbacks, advances, onClick, textButton } = props
+    drawbacks = ["Some diagrams", "Unlimitted contributors"]
+    advances = ["All other features"]
 </script>
 
 <style>
@@ -46,7 +43,7 @@
     .btn:hover {
         background-color: #6ea174;
     }
-    @media (max-width: 1023px) {
+    @media (max-width: 1023px) and (min-width: 768px) {
         .container {
             width: 220px !important;
             padding: 10px 5px;
@@ -58,10 +55,55 @@
             font-size: 36px;
         }
         .feature {
-            margin: 5px;
+            margin: 15px;
         }
         .btn {
             height: 48px;
+        }
+    }
+    @media (max-width: 767px) and (min-width: 425px) {
+        .container {
+            width: 290px;
+        }
+        .package-header h2 {
+            font-size: 20px;
+        }
+        .cost h1 {
+            font-size: 36px;
+        }
+        .feature {
+            margin: 15px;
+        }
+        .btn {
+            height: 48px;
+        }
+    }
+    @media (max-width: 424px) and (min-width: 320px) {
+        .container {
+            width: 250px;
+        }
+        .package-header h2 {
+            font-size: 20px;
+            margin-block-start: 0.4em;
+            margin-block-end: 0.4em;
+        }
+        .cost h1 {
+            font-size: 36px;
+            margin-block-start: 0.4em;
+            margin-block-end: 0.4em;
+        }
+        .feature {
+            margin: 15px !important;
+        }
+        .btn {
+            height: 48px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+    }
+    @media (width: 320px) {
+        .feature {
+            margin: 5px !important;
         }
     }
 </style>
@@ -69,9 +111,6 @@
 <div class="container">
     <div class="package-header">
         <h2>{title || "Free"}</h2>
-        {#if banner}
-            <div class="banner">{"popular"}</div>
-        {/if}
     </div>
     <div class="cost">
         <h1>{price || 0}$/ <span>month</span></h1>

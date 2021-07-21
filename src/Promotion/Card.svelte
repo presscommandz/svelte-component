@@ -43,10 +43,20 @@
         background: transparent;
         transform: rotateY(180deg);
     }
-    @media (max-width: 1023px) {
+    @media (max-width: 1023px) and (min-width: 768px) {
         .scene {
             width: 240px;
             margin: 30px 5px;
+        }
+    }
+    @media (max-width: 767px) and (min-width: 425px) {
+        .scene {
+            width: 300px;
+        }
+    }
+    @media (max-width: 425px) and (min-width: 375px) {
+        .scene {
+            width: 280px;
         }
     }
 </style>

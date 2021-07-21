@@ -5,11 +5,27 @@
     import Card from "./Card.svelte"
     import Plan from "./Plan.svelte"
     export let props = {}
-    export let onFlip
-    export let isFlipped
     const viewModel = new PromotionViewModel({ ...props })
     onMount(() => viewModel.onMount())
     onDestroy(() => viewModel.onDestroy())
+
+    let data = [
+        {
+            props: {
+                title: "Free"
+            }
+        },
+        {
+            props: {
+                title: "Pro"
+            }
+        },
+        {
+            props: {
+                title: "Lifetime"
+            }
+        }
+    ]
     let width
 </script>
 
@@ -134,7 +150,11 @@
         <span class="monthly">monthly</span>
         <div>
             <label class="switch-round">
-                <input type="checkbox" checked={isFlipped} on:click={onFlip} />
+                <input
+                    type="checkbox"
+                    checked={viewModel.isFlipped}
+                    on:click={_ => viewModel.onFlip()}
+                />
                 <span class="slider" />
             </label>
         </div>
@@ -143,39 +163,23 @@
 
     {#if width <= 576}
         <Carousel>
-            <div class="swiper-slide">
-                <Card {isFlipped}>
-                    <Plan slot="front" />
-                    <Plan slot="back" title="Free(year)" />
-                </Card>
-            </div>
-            <div class="swiper-slide">
-                <Card {isFlipped}>
-                    <Plan slot="front" title="Pro" />
-                    <Plan slot="back" title="Pro(year)" />
-                </Card>
-            </div>
-            <div class="swiper-slide">
-                <Card {isFlipped}>
-                    <Plan slot="front" title="Lifetime" />
-                    <Plan slot="back" title="Lifetime(year)" />
-                </Card>
-            </div>
+            {#each data as d}
+                <div class="swiper-slide">
+                    <Card isFlipped={viewModel.isFlipped}>
+                        <Plan slot="front" props={d.props} />
+                        <Plan slot="back" props={d.props} />
+                    </Card>
+                </div>
+            {/each}
         </Carousel>
     {:else}
         <div class="pricing">
-            <Card {isFlipped}>
-                <Plan slot="front" />
-                <Plan slot="back" title="Free(year)" />
-            </Card>
-            <Card {isFlipped}>
-                <Plan slot="front" title="Pro" />
-                <Plan slot="back" title="Pro(year)" />
-            </Card>
-            <Card {isFlipped}>
-                <Plan slot="front" title="Lifetime" />
-                <Plan slot="back" title="Lifetime(year)" />
-            </Card>
+            {#each data as d}
+                <Card isFlipped={viewModel.isFlipped}>
+                    <Plan slot="front" props={d.props} />
+                    <Plan slot="back" props={d.props} />
+                </Card>
+            {/each}
         </div>
     {/if}
 </div>

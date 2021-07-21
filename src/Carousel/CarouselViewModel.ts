@@ -14,8 +14,7 @@ export default class CarouselViewModel {
             spaceBetween: 10,
             pagination: {
                 el: ".swiper-pagination"
-            },
-            autoplay: true
+            }
         })
     }
 
