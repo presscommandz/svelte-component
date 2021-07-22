@@ -1,13 +1,15 @@
-import PromotionModel from "./PromotionModel"
+import { Writable, writable } from "svelte/store"
+import Swiper from "swiper/bundle"
 
 export default class PromotionViewModel {
-    promotionData = {}
-    isFlipped: boolean
+    private isFlipped: boolean
+    mySwiper: HTMLElement
+    swiperController: Swiper
+    isSwiper: Writable<boolean>
 
-    constructor(props: PromotionModel) {
-        this.promotionData = new PromotionModel(props)
-        const { isFlipped } = props
-        this.isFlipped = isFlipped
+    constructor(props) {
+        this.isFlipped = false
+        this.isSwiper = writable(false)
     }
 
     onFlip() {
@@ -17,6 +19,30 @@ export default class PromotionViewModel {
         })
     }
 
+    async detectWidth(width: number) {
+        if (width < 768) {
+            await this.isSwiper.set(true)
+            this.swiperController = new Swiper(".mySwiper", {
+                slidesPerView: 1.2,
+                centeredSlides: true,
+                loop: false,
+                spaceBetween: 10,
+                pagination: {
+                    el: document.querySelector(
+                        ".swiper-pagination"
+                    ) as HTMLElement,
+                    clickable: true
+                }
+            })
+        } else {
+            this.isSwiper.set(false)
+        }
+    }
+
     onMount() {}
-    onDestroy() {}
+    onDestroy() {
+        if (this.swiperController) {
+            this.swiperController.destroy()
+        }
+    }
 }

@@ -1,12 +1,25 @@
 <script>
-    import PromotionViewModel from "./PromotionViewModel"
-    import Carousel from "../Carousel/Carousel.svelte"
     import { onMount, onDestroy } from "svelte"
-    import Card from "./Card.svelte"
-    import Plan from "./Plan.svelte"
+    import "swiper/swiper-bundle.min.css"
+
+    import PromotionViewModel from "src/Promotion/PromotionViewModel"
+    import Card from "src/Promotion/Card.svelte"
+    import Plan from "src/Promotion/Plan.svelte"
+
     export let props = {}
+    let { title, subtitle, note } = props
+    title = "Find the right plan"
+    subtitle = "Join the revolution"
+    note = "Flexible pricing options for freelancers and design teams."
+
+    let isSwiper
+    $: _isSwiper = isSwiper
     const viewModel = new PromotionViewModel({ ...props })
-    onMount(() => viewModel.onMount())
+    onMount(() => {
+        viewModel.onMount()
+        viewModel.isSwiper.subscribe(x => (isSwiper = x))
+        viewModel.detectWidth(window.innerWidth)
+    })
     onDestroy(() => viewModel.onDestroy())
 
     let data = [
@@ -26,7 +39,6 @@
             }
         }
     ]
-    let width
 </script>
 
 <style>
@@ -123,10 +135,18 @@
         align-items: center;
         flex-wrap: wrap;
     }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
     .swiper-slide {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .swiper-pagination {
+        width: 100%;
+        margin: 5px;
     }
     @media (max-width: 1023px) {
         .container .header h1 {
@@ -138,13 +158,17 @@
     }
 </style>
 
-<svelte:window bind:innerWidth={width} />
+<svelte:window
+    on:resize={async e => {
+        await viewModel.detectWidth(e.target.innerWidth)
+    }}
+/>
 
 <div class="container">
     <div class="header">
-        <h2>{viewModel.promotionData.subtitle}</h2>
-        <h1>{viewModel.promotionData.title}</h1>
-        <h3>{viewModel.promotionData.note}</h3>
+        <h2>{subtitle}</h2>
+        <h1>{title}</h1>
+        <h3>{note}</h3>
     </div>
     <div class="box">
         <span class="monthly">monthly</span>
@@ -153,25 +177,30 @@
                 <input
                     type="checkbox"
                     checked={viewModel.isFlipped}
-                    on:click={_ => viewModel.onFlip()}
+                    on:click={viewModel.onFlip}
                 />
                 <span class="slider" />
             </label>
         </div>
         <span class="yearly">yearly</span>
     </div>
-
-    {#if width <= 576}
-        <Carousel>
-            {#each data as d}
-                <div class="swiper-slide">
-                    <Card isFlipped={viewModel.isFlipped}>
-                        <Plan slot="front" props={d.props} />
-                        <Plan slot="back" props={d.props} />
-                    </Card>
-                </div>
-            {/each}
-        </Carousel>
+    {#if _isSwiper}
+        <div class="swiper-container mySwiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                {#each data as d}
+                    <div class="swiper-slide">
+                        <Card isFlipped={viewModel.isFlipped}>
+                            <Plan slot="front" props={d.props} />
+                            <Plan slot="back" props={d.props} />
+                        </Card>
+                    </div>
+                {/each}
+            </div>
+            <div class="footer" />
+            <div class="swiper-pagination" />
+        </div>
     {:else}
         <div class="pricing">
             {#each data as d}
