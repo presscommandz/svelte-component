@@ -1,5 +1,6 @@
 import svelte from "rollup-plugin-svelte"
 import resolve from "@rollup/plugin-node-resolve"
+import alias from "@rollup/plugin-alias"
 import pkg from "./package.json"
 import autoPreprocess from "svelte-preprocess"
 import typescript from "@rollup/plugin-typescript"
@@ -22,6 +23,12 @@ export default {
         }),
         css({ output: "bundle.css" }),
         typescript(),
-        resolve()
+        resolve(),
+        alias({
+            resolve: [".js", ".ts", ".svelte"],
+            entries: {
+                "@Promotion": "src/Promotion"
+            }
+        })
     ]
 }

@@ -2,15 +2,11 @@
     import { onMount, onDestroy } from "svelte"
     import "swiper/swiper-bundle.min.css"
 
-    import PromotionViewModel from "src/Promotion/PromotionViewModel"
-    import Card from "src/Promotion/Card.svelte"
-    import Plan from "src/Promotion/Plan.svelte"
+    import PromotionViewModel from "@Promotion/PromotionViewModel"
+    import Card from "@Promotion/Card.svelte"
+    import Plan from "@Promotion/Plan.svelte"
 
     export let props = {}
-    let { title, subtitle, note } = props
-    title = "Find the right plan"
-    subtitle = "Join the revolution"
-    note = "Flexible pricing options for freelancers and design teams."
 
     let isSwiper
     $: _isSwiper = isSwiper
@@ -166,9 +162,9 @@
 
 <div class="container">
     <div class="header">
-        <h2>{subtitle}</h2>
-        <h1>{title}</h1>
-        <h3>{note}</h3>
+        <h2>{viewModel.promotionData.subtitle}</h2>
+        <h1>{viewModel.promotionData.title}</h1>
+        <h3>{viewModel.promotionData.note}</h3>
     </div>
     <div class="box">
         <span class="monthly">monthly</span>
@@ -189,11 +185,11 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                {#each data as d}
+                {#each viewModel.promotionData.listCard as d}
                     <div class="swiper-slide">
                         <Card isFlipped={viewModel.isFlipped}>
-                            <Plan slot="front" props={d.props} />
-                            <Plan slot="back" props={d.props} />
+                            <Plan slot="front" props={d} />
+                            <Plan slot="back" props={d} />
                         </Card>
                     </div>
                 {/each}
@@ -203,10 +199,10 @@
         </div>
     {:else}
         <div class="pricing">
-            {#each data as d}
+            {#each viewModel.promotionData.listCard as d}
                 <Card isFlipped={viewModel.isFlipped}>
-                    <Plan slot="front" props={d.props} />
-                    <Plan slot="back" props={d.props} />
+                    <Plan slot="front" props={d} />
+                    <Plan slot="back" props={d} />
                 </Card>
             {/each}
         </div>

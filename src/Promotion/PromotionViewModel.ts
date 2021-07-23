@@ -1,13 +1,16 @@
 import { Writable, writable } from "svelte/store"
 import Swiper from "swiper/bundle"
+import PromotionModel from "@Promotion/PromotionModel"
 
 export default class PromotionViewModel {
     private isFlipped: boolean
     mySwiper: HTMLElement
     swiperController: Swiper
     isSwiper: Writable<boolean>
+    promotionData = {}
 
     constructor(props) {
+        this.promotionData = new PromotionModel({ ...props })
         this.isFlipped = false
         this.isSwiper = writable(false)
     }
@@ -19,9 +22,9 @@ export default class PromotionViewModel {
         })
     }
 
-    async detectWidth(width: number) {
+    detectWidth(width: number) {
         if (width < 768) {
-            await this.isSwiper.set(true)
+            this.isSwiper.set(true)
             this.swiperController = new Swiper(".mySwiper", {
                 slidesPerView: 1.2,
                 centeredSlides: true,
@@ -36,13 +39,12 @@ export default class PromotionViewModel {
             })
         } else {
             this.isSwiper.set(false)
+            this.swiperController?.destroy()
         }
     }
 
     onMount() {}
     onDestroy() {
-        if (this.swiperController) {
-            this.swiperController.destroy()
-        }
+        this.swiperController?.destroy()
     }
 }

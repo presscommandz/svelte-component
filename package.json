@@ -32,6 +32,7 @@
         "swiper": "^6.7.5"
     },
     "devDependencies": {
+        "@rollup/plugin-alias": "^3.1.4",
         "@rollup/plugin-node-resolve": "^13.0.0",
         "@rollup/plugin-typescript": "^8.2.3",
         "@tsconfig/svelte": "^2.0.1",

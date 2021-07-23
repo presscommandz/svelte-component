@@ -4,6 +4,9 @@
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
+        "paths": {
+            "@Promotion/*": ["src/Promotion/*"]
+        },
         "declaration": true,
         "declarationDir": "lib",
         "sourceMap": true,

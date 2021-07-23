@@ -1,8 +1,7 @@
 <script>
     export let props = {}
     let { title, price, drawbacks, advances, onClick, textButton } = props
-    drawbacks = ["Some diagrams", "Unlimitted contributors"]
-    advances = ["All other features"]
+    console.log(props)
 </script>
 
 <style>
@@ -110,10 +109,10 @@
 
 <div class="container">
     <div class="package-header">
-        <h2>{title || "Free"}</h2>
+        <h2>{title}</h2>
     </div>
     <div class="cost">
-        <h1>{price || 0}$/ <span>month</span></h1>
+        <h1>{price}$/ <span>month</span></h1>
     </div>
     <div class="feature">
         {#each advances as advance}
@@ -124,6 +123,6 @@
         {/each}
     </div>
     <button class="btn" on:click={onClick}>
-        {textButton || "Get Free"}
+        {textButton}
     </button>
 </div>
