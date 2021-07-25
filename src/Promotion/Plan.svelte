@@ -1,7 +1,6 @@
 <script>
     export let props = {}
     let { title, price, drawbacks, advances, onClick, textButton } = props
-    console.log(props)
 </script>
 
 <style>
