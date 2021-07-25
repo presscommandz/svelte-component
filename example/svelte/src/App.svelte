@@ -1,11 +1,13 @@
 <script>
     import { Promotion } from "@presscommandz/svelte-component"
-    let props = {
+    import { PromotionViewModel } from "@presscommandz/svelte-component"
+    let data = {
+        subtitle: "Fuck you",
         listCard: [
             {
                 title: "Hello world",
                 textButton: "Boom",
-                typ: "secondary"
+                typ: "secondary123"
             },
             {
                 title: "Hello world",
@@ -19,6 +21,8 @@
             }
         ]
     }
+
+    const promotionViewModel = new PromotionViewModel(data)
 </script>
 
-<Promotion props={props}/>
+<Promotion viewModel={promotionViewModel} backgroundColor={"fuck"} />

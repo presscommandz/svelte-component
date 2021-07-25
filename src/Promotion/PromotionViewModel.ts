@@ -1,50 +1,67 @@
-import { Writable, writable } from "svelte/store"
+import { Writable, writable, get } from "svelte/store"
 import Swiper from "swiper/bundle"
 import PromotionModel from "@Promotion/PromotionModel"
+import { tick } from "svelte"
 
 export default class PromotionViewModel {
-    private isFlipped: boolean
-    mySwiper: HTMLElement
-    swiperController: Swiper
-    isSwiper: Writable<boolean>
-    promotionData = {}
+    private swiperController: Swiper
+    private promotionData: any = {}
 
-    constructor(props) {
-        this.promotionData = new PromotionModel({ ...props })
-        this.isFlipped = false
-        this.isSwiper = writable(false)
+    isFlipped: Writable<boolean> = writable(false)
+    isSwiper: Writable<boolean> = writable(false)
+    windowWidth: Writable<number> = writable(window.innerWidth)
+
+    // MARK: - view data
+    get subTitle(): string {
+        return this.promotionData.subtitle
+    }
+
+    get listCard(): any[] {
+        return this.promotionData.listCard
+    }
+
+    constructor(data: any) {
+        this.promotionData = new PromotionModel(data)
+
+        this.onFlip = this.onFlip.bind(this)
+    }
+
+    onMount() {
+        this.windowWidth.subscribe(width => {
+            if (!get(this.isSwiper) && width < 768) {
+                console.log(width, get(this.isSwiper))
+                this.isSwiper.set(true)
+            } else if (get(this.isSwiper) && width >= 768) {
+                console.log(width, get(this.isSwiper))
+                this.isSwiper.set(false)
+            }
+        })
+
+        this.isSwiper.subscribe(async isSwipable => {
+            await tick()
+            if (isSwipable) {
+                this.swiperController = new Swiper(".mySwiper", {
+                    slidesPerView: 1.2,
+                    centeredSlides: true,
+                    loop: false,
+                    spaceBetween: 10,
+                    pagination: {
+                        el: document.querySelector(
+                            ".swiper-pagination"
+                        ) as HTMLElement,
+                        clickable: true
+                    }
+                })
+            } else {
+                this.swiperController?.destroy()
+            }
+        })
+    }
+    onDestroy() {
+        this.swiperController?.destroy()
     }
 
     onFlip() {
-        this.isFlipped = !this.isFlipped
-        document.querySelectorAll(".card").forEach((item: HTMLElement) => {
-            item.classList.toggle("isFlipped")
-        })
-    }
-
-    detectWidth(width: number) {
-        if (width < 768) {
-            this.isSwiper.set(true)
-            this.swiperController = new Swiper(".mySwiper", {
-                slidesPerView: 1.2,
-                centeredSlides: true,
-                loop: false,
-                spaceBetween: 10,
-                pagination: {
-                    el: document.querySelector(
-                        ".swiper-pagination"
-                    ) as HTMLElement,
-                    clickable: true
-                }
-            })
-        } else {
-            this.isSwiper.set(false)
-            this.swiperController?.destroy()
-        }
-    }
-
-    onMount() {}
-    onDestroy() {
-        this.swiperController?.destroy()
+        this.isFlipped.set(!get(this.isFlipped))
     }
 }

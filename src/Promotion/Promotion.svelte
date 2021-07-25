@@ -1,40 +1,29 @@
-<script>
+<script lang="typescript">
     import { onMount, onDestroy } from "svelte"
     import "swiper/swiper-bundle.min.css"
 
-    import PromotionViewModel from "@Promotion/PromotionViewModel"
+    import type PromotionViewModel from "@Promotion/PromotionViewModel"
     import Card from "@Promotion/Card.svelte"
     import Plan from "@Promotion/Plan.svelte"
 
-    export let props = {}
+    export let backgroundColor: string = "clear"
+    let bgColor = "clear"
+    $: if (backgroundColor) {
+        // validate
 
-    let isSwiper
-    $: _isSwiper = isSwiper
-    const viewModel = new PromotionViewModel({ ...props })
+        // valid
+        bgColor = backgroundColor
+        // else
+        bgColor = "clear"
+    }
+
+    export let viewModel: PromotionViewModel
+
+    const { isFlipped, windowWidth, isSwiper } = viewModel
     onMount(() => {
         viewModel.onMount()
-        viewModel.isSwiper.subscribe(x => (isSwiper = x))
-        viewModel.detectWidth(window.innerWidth)
     })
     onDestroy(() => viewModel.onDestroy())
-
-    let data = [
-        {
-            props: {
-                title: "Free"
-            }
-        },
-        {
-            props: {
-                title: "Pro"
-            }
-        },
-        {
-            props: {
-                title: "Lifetime"
-            }
-        }
-    ]
 </script>
 
 <style>
@@ -44,6 +33,7 @@
         align-items: center;
         flex-direction: column;
         overflow: hidden;
+        background-color: var(--bgColor);
     }
     .container .header {
         text-align: center;
@@ -154,17 +144,13 @@
     }
 </style>
 
-<svelte:window
-    on:resize={async e => {
-        await viewModel.detectWidth(e.target.innerWidth)
-    }}
-/>
+<svelte:window bind:innerWidth={$windowWidth} />
 
-<div class="container">
+<div class="container" style="--bgColor:{bgColor};">
     <div class="header">
-        <h2>{viewModel.promotionData.subtitle}</h2>
-        <h1>{viewModel.promotionData.title}</h1>
-        <h3>{viewModel.promotionData.note}</h3>
+        <h2>{viewModel.subTitle}</h2>
+        <!-- <h1>{viewModel.title}</h1>
+        <h3>{viewModel.note}</h3> -->
     </div>
     <div class="box">
         <span class="monthly">monthly</span>
@@ -172,7 +158,7 @@
             <label class="switch-round">
                 <input
                     type="checkbox"
-                    checked={viewModel.isFlipped}
+                    checked={$isFlipped}
                     on:click={viewModel.onFlip}
                 />
                 <span class="slider" />
@@ -180,14 +166,14 @@
         </div>
         <span class="yearly">yearly</span>
     </div>
-    {#if _isSwiper}
+    {#if $isSwiper}
         <div class="swiper-container mySwiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                {#each viewModel.promotionData.listCard as d}
+                {#each viewModel.listCard as d}
                     <div class="swiper-slide">
-                        <Card isFlipped={viewModel.isFlipped}>
+                        <Card isFlipped={$isFlipped}>
                             <Plan slot="front" props={d} />
                             <Plan slot="back" props={d} />
                         </Card>
@@ -199,8 +185,8 @@
         </div>
     {:else}
         <div class="pricing">
-            {#each viewModel.promotionData.listCard as d}
-                <Card isFlipped={viewModel.isFlipped}>
+            {#each viewModel.listCard as d}
+                <Card isFlipped={$isFlipped}>
                     <Plan slot="front" props={d} />
                     <Plan slot="back" props={d} />
                 </Card>
