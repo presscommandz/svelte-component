@@ -149,8 +149,8 @@
 <div class="container" style="--bgColor:{bgColor};">
     <div class="header">
         <h2>{viewModel.subTitle}</h2>
-        <!-- <h1>{viewModel.title}</h1>
-        <h3>{viewModel.note}</h3> -->
+        <h1>{viewModel.title}</h1>
+        <h3>{viewModel.note}</h3>
     </div>
     <div class="box">
         <span class="monthly">monthly</span>

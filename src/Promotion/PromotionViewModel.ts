@@ -11,9 +11,16 @@ export default class PromotionViewModel {
     isSwiper: Writable<boolean> = writable(false)
     windowWidth: Writable<number> = writable(window.innerWidth)
 
-    // MARK: - view data
+    get title(): string {
+        return this.promotionData.title
+    }
+
     get subTitle(): string {
         return this.promotionData.subtitle
+    }
+
+    get note(): string {
+        return this.promotionData.note
     }
 
     get listCard(): any[] {
@@ -22,7 +29,6 @@ export default class PromotionViewModel {
 
     constructor(data: any) {
         this.promotionData = new PromotionModel(data)
-
         this.onFlip = this.onFlip.bind(this)
     }
 
