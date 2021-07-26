@@ -1,6 +1,7 @@
 import { Writable, writable, get } from "svelte/store"
 import Swiper from "swiper/bundle"
 import PromotionModel from "@Promotion/PromotionModel"
+import type PlanModel from "@Promotion/Plan/PlanModel"
 import { tick } from "svelte"
 
 export default class PromotionViewModel {
@@ -23,7 +24,7 @@ export default class PromotionViewModel {
         return this.promotionData.note
     }
 
-    get listCard(): any[] {
+    get listCard(): PlanModel[] {
         return this.promotionData.listCard
     }
 
