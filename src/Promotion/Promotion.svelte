@@ -5,6 +5,7 @@
     import Plan from "@Promotion/Plan/Plan.svelte"
 
     export let backgroundColor: string = "clear"
+    export let heightOfCard: number = 330
     let bgColor = "clear"
 
     function isValidHex(color): boolean {
@@ -210,7 +211,11 @@
                 <!-- Slides -->
                 {#each viewModel.listCard as data}
                     <div class="swiper-slide">
-                        <Plan isFlipped={$isFlipped} viewModel={viewModel.createPlanViewModel(data)} />
+                        <Plan
+                            isFlipped={$isFlipped}
+                            viewModel={viewModel.createPlanViewModel(data)}
+                            h={heightOfCard}
+                        />
                     </div>
                 {/each}
             </div>
@@ -220,7 +225,11 @@
     {:else}
         <div class="pricing">
             {#each viewModel.listCard as data}
-                <Plan isFlipped={$isFlipped} viewModel={viewModel.createPlanViewModel(data)} />
+                <Plan
+                    isFlipped={$isFlipped}
+                    viewModel={viewModel.createPlanViewModel(data)}
+                    h={heightOfCard}
+                />
             {/each}
         </div>
     {/if}

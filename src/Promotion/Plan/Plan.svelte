@@ -3,12 +3,13 @@
     export let isFlipped = false
     export let viewModel: PlanViewModel
     export let onClick = _ => {}
+    export let h: number = 330
+    let height = h ? `${h}px` : "330px"
 </script>
 
 <style lang="scss">
     .scene {
         width: 220px !important;
-        height: 330px;
         margin: 30px 10px;
         perspective: 600px;
     }
@@ -73,10 +74,10 @@
             color: white;
             font-weight: 500;
         }
-        
     }
 
-    .card__face--front, .card__face--back {
+    .card__face--front,
+    .card__face--back {
         width: 100%;
         height: 100%;
     }
@@ -96,11 +97,13 @@
     }
 </style>
 
-<div class="scene scene--card">
+<div class="scene scene--card" style="height: {height}">
     <div class="card" class:isFlipped>
         <div class="card__face card__face--front">
             <h2 class="title">{viewModel.title}</h2>
-            <h1 class="cost">{viewModel.price}$<span class="time">/ month</span></h1>
+            <h1 class="cost">
+                {viewModel.price}$<span class="time">/ month</span>
+            </h1>
             <div class="feature">
                 {#each viewModel.advances as advance}
                     <span>+ {advance}</span>
@@ -115,7 +118,9 @@
         </div>
         <div class="card__face card__face--back">
             <h2 class="title">{viewModel.title}(year)</h2>
-            <h1 class="cost">{viewModel.price}$<span class="time">/ month</span></h1>
+            <h1 class="cost">
+                {viewModel.price}$<span class="time">/ month</span>
+            </h1>
             <div class="feature">
                 {#each viewModel.advances as advance}
                     <span>+ {advance}</span>
@@ -126,7 +131,7 @@
             </div>
             <button class="btn" on:click={onClick}>
                 {viewModel.text}
-            </button>  
+            </button>
         </div>
     </div>
 </div>
