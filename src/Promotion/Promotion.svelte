@@ -3,7 +3,7 @@
     import "swiper/swiper-bundle.min.css"
 
     import type PromotionViewModel from "@Promotion/PromotionViewModel"
-    import Card from "@Promotion/Card.svelte"
+    import Card from "@Promotion/Plan/Plan.svelte"
     import Plan from "@Promotion/Plan/Plan.svelte"
 
     export let backgroundColor: string = "clear"
@@ -149,6 +149,7 @@
     }
     .swiper-pagination {
         width: 100%;
+        height: 20px;
         margin: 5px;
     }
     @media (max-width: 1023px) {
@@ -157,6 +158,12 @@
         }
         .container .header h2 {
             font-size: 24px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .swiper-container {
+            width: 75%;
         }
     }
 </style>
@@ -190,16 +197,7 @@
                 <!-- Slides -->
                 {#each viewModel.listCard as data}
                     <div class="swiper-slide">
-                        <Card isFlipped={$isFlipped}>
-                            <Plan
-                                slot="front"
-                                viewModel={viewModel.createPlanViewModel(data)}
-                            />
-                            <Plan
-                                slot="back"
-                                viewModel={viewModel.createPlanViewModel(data)}
-                            />
-                        </Card>
+                        <Plan isFlipped={$isFlipped} viewModel={viewModel.createPlanViewModel(data)} />
                     </div>
                 {/each}
             </div>
@@ -209,16 +207,7 @@
     {:else}
         <div class="pricing">
             {#each viewModel.listCard as data}
-                <Card isFlipped={$isFlipped}>
-                    <Plan
-                        slot="front"
-                        viewModel={viewModel.createPlanViewModel(data)}
-                    />
-                    <Plan
-                        slot="back"
-                        viewModel={viewModel.createPlanViewModel(data)}
-                    />
-                </Card>
+                <Plan isFlipped={$isFlipped} viewModel={viewModel.createPlanViewModel(data)} />
             {/each}
         </div>
     {/if}

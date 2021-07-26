@@ -47,7 +47,7 @@ export default class PromotionViewModel {
             await tick()
             if (isSwipable) {
                 this.swiperController = new Swiper(".mySwiper", {
-                    slidesPerView: 1.2,
+                    slidesPerView: 1.5,
                     centeredSlides: true,
                     loop: false,
                     spaceBetween: 10,
