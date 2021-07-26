@@ -37,7 +37,6 @@
 
     const { isFlipped, windowWidth, isSwiper } = viewModel
 
-    console.log(viewModel.listCard)
     onMount(() => {
         viewModel.onMount()
     })
@@ -189,11 +188,17 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                {#each viewModel.listCard as d}
+                {#each viewModel.listCard as data}
                     <div class="swiper-slide">
                         <Card isFlipped={$isFlipped}>
-                            <Plan slot="front" props={d} />
-                            <Plan slot="back" props={d} />
+                            <Plan
+                                slot="front"
+                                viewModel={viewModel.createPlanViewModel(data)}
+                            />
+                            <Plan
+                                slot="back"
+                                viewModel={viewModel.createPlanViewModel(data)}
+                            />
                         </Card>
                     </div>
                 {/each}
@@ -203,10 +208,16 @@
         </div>
     {:else}
         <div class="pricing">
-            {#each viewModel.listCard as d}
+            {#each viewModel.listCard as data}
                 <Card isFlipped={$isFlipped}>
-                    <Plan slot="front" props={d} />
-                    <Plan slot="back" props={d} />
+                    <Plan
+                        slot="front"
+                        viewModel={viewModel.createPlanViewModel(data)}
+                    />
+                    <Plan
+                        slot="back"
+                        viewModel={viewModel.createPlanViewModel(data)}
+                    />
                 </Card>
             {/each}
         </div>

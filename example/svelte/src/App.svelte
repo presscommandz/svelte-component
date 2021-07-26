@@ -2,7 +2,7 @@
     import { Promotion } from "@presscommandz/svelte-component"
     import { PromotionViewModel } from "@presscommandz/svelte-component"
     let data = {
-        subtitle: "Fuck you",
+        subtitle: "Hello World",
         listCard: [
             {
                 title: "Hello world",
@@ -25,4 +25,4 @@
     const promotionViewModel = new PromotionViewModel(data)
 </script>
 
-<Promotion viewModel={promotionViewModel} backgroundColor={"fuck"} />
+<Promotion viewModel={promotionViewModel} backgroundColor={"red"} />
