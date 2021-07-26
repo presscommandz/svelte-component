@@ -1,9 +1,7 @@
 <script lang="typescript">
     import { onMount, onDestroy } from "svelte"
     import "swiper/swiper-bundle.min.css"
-
     import type PromotionViewModel from "@Promotion/PromotionViewModel"
-    import Card from "@Promotion/Plan/Plan.svelte"
     import Plan from "@Promotion/Plan/Plan.svelte"
 
     export let backgroundColor: string = "clear"
@@ -161,9 +159,24 @@
         }
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 767px) and (min-width: 426px) {
         .swiper-container {
-            width: 75%;
+            width: 40%;
+        }
+    }
+    @media (max-width: 425px) {
+        .swiper-container {
+            width: 70%;
+        }
+    }
+    @media (max-width: 375px) {
+        .swiper-container {
+            width: 85%;
+        }
+    }
+    @media (max-width: 320px) {
+        .swiper-container {
+            width: 100%;
         }
     }
 </style>

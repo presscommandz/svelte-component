@@ -7,8 +7,8 @@
 
 <style lang="scss">
     .scene {
-        width: 240px;
-        height: 350px;
+        width: 220px !important;
+        height: 330px;
         margin: 30px 10px;
         perspective: 600px;
     }
@@ -88,6 +88,11 @@
     .card__face--back {
         background: transparent;
         transform: rotateY(180deg);
+    }
+    @media (max-width: 1023px) and (min-width: 768px) {
+        .scene {
+            margin: 10px;
+        }
     }
 </style>
 

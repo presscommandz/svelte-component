@@ -47,10 +47,10 @@ export default class PromotionViewModel {
             await tick()
             if (isSwipable) {
                 this.swiperController = new Swiper(".mySwiper", {
-                    slidesPerView: 1.5,
+                    slidesPerView: 1.2,
                     centeredSlides: true,
                     loop: false,
-                    spaceBetween: 10,
+                    spaceBetween: 5,
                     pagination: {
                         el: document.querySelector(
                             ".swiper-pagination"
