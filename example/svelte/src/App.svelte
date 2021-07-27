@@ -25,4 +25,4 @@
     const promotionViewModel = new PromotionViewModel(data)
 </script>
 
-<Promotion viewModel={promotionViewModel} backgroundColor={"red"} heightOfCard={350}/>
+<Promotion viewModel={promotionViewModel} backgroundColor={"red"} heightOfCard={330}/>

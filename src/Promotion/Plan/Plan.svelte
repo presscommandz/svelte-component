@@ -10,8 +10,9 @@
 <style lang="scss">
     .scene {
         width: 220px !important;
-        margin: 30px 10px;
+        margin: 30px 15px;
         perspective: 600px;
+        transition: 10s;
     }
 
     .card {
@@ -42,13 +43,13 @@
         .title {
             margin-top: 30px;
             margin-bottom: 15px;
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 200;
         }
         .cost {
-            font-size: 40px;
+            font-size: 32px;
             margin-top: 0;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 300;
             .time {
                 color: #32b6ea;
@@ -62,11 +63,11 @@
             margin-top: 0;
             margin-bottom: 30px;
             margin-left: 45px;
-            font-size: 16px;
+            font-size: 12px;
         }
         .btn {
             border: none;
-            background-color: #61ba7e;
+            background-color: #79af7e;
             width: 75%;
             height: 45px;
             border-radius: 10px;
@@ -92,7 +93,24 @@
     }
     @media (max-width: 1023px) and (min-width: 768px) {
         .scene {
-            margin: 10px;
+            margin: 0 15px;
+        }
+    }
+    @media (max-width: 425px) {
+        .card__face {
+            .title {
+                font-size: 24px;
+            }
+            .cost {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+            .feature {
+                font-size: 12px;
+            }
+            .btn {
+                font-size: 20px;
+            }
         }
     }
 </style>

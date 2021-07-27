@@ -34,6 +34,16 @@ export default class PromotionViewModel {
         return this.promotionData.listCard
     }
 
+    private createBreakPoint(): {} {
+        let breakpoints = {}
+        for (let i = 320; i <= 767; i++) {
+            breakpoints[i] = {
+                slidesPerView: (1.2 + (i - 320) * 0.004).toFixed(2)
+            }
+        }
+        return breakpoints
+    }
+
     onMount() {
         this.windowWidth.subscribe(width => {
             if (!get(this.isSwiper) && width < 768) {
@@ -43,20 +53,20 @@ export default class PromotionViewModel {
             }
         })
 
+        let listBreakpoints = this.createBreakPoint()
+
         this.isSwiper.subscribe(async isSwipable => {
             await tick()
             if (isSwipable) {
                 this.swiperController = new Swiper(".mySwiper", {
-                    slidesPerView: 1.2,
                     centeredSlides: true,
-                    loop: false,
-                    spaceBetween: 5,
                     pagination: {
                         el: document.querySelector(
                             ".swiper-pagination"
                         ) as HTMLElement,
                         clickable: true
-                    }
+                    },
+                    breakpoints: listBreakpoints
                 })
             } else {
                 this.swiperController?.destroy()

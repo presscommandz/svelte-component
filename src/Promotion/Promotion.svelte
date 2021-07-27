@@ -42,7 +42,7 @@
     onDestroy(() => viewModel.onDestroy())
 </script>
 
-<style>
+<style lang="scss">
     .container {
         display: flex;
         justify-content: center;
@@ -50,28 +50,28 @@
         flex-direction: column;
         overflow: hidden;
         background-color: var(--bgColor);
-    }
-    .container .header {
-        text-align: center;
-    }
-    .container .header h1 {
-        font-size: 64px;
-        margin-block-start: 0.3em;
-        color: #4fb6e0;
-        font-weight: 100;
-    }
-    .container .header h2 {
-        font-size: 40px;
-        margin-block-end: 0.3em;
-        font-weight: 100;
-    }
-    .container .header h3 {
-        color: #a7acb9;
-        font-weight: 100;
-        width: 320px;
-        word-wrap: break-word;
-        margin-left: auto;
-        margin-right: auto;
+        .header {
+            text-align: center;
+            h1 {
+                font-size: 64px;
+                margin-block-start: 0.3em;
+                color: #4fb6e0;
+                font-weight: 100;
+            }
+            h2 {
+                font-size: 40px;
+                margin-block-end: 0.3em;
+                font-weight: 100;
+            }
+            h3 {
+                color: #a7acb9;
+                font-weight: 100;
+                width: 320px;
+                word-wrap: break-word;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
     }
     .box {
         display: flex;
@@ -81,7 +81,7 @@
     }
     .monthly,
     .yearly {
-        font-size: 24px;
+        font-size: 16px;
         margin: 20px;
         margin-bottom: 30px;
     }
@@ -152,32 +152,30 @@
         margin: 5px;
     }
     @media (max-width: 1023px) {
-        .container .header h1 {
-            font-size: 48px;
-        }
-        .container .header h2 {
-            font-size: 24px;
-        }
-    }
-
-    @media (max-width: 767px) and (min-width: 426px) {
-        .swiper-container {
-            width: 40%;
+        .container {
+            .header {
+                h1 {
+                    font-size: 48px;
+                }
+                h2 {
+                    font-size: 24px;
+                }
+            }
         }
     }
-    @media (max-width: 425px) {
-        .swiper-container {
-            width: 70%;
-        }
-    }
-    @media (max-width: 375px) {
-        .swiper-container {
-            width: 85%;
-        }
-    }
-    @media (max-width: 320px) {
-        .swiper-container {
-            width: 100%;
+    @media (width: 320px) {
+        .container {
+            .header {
+                h1 {
+                    font-size: 36px;
+                }
+                h2 {
+                    font-size: 20px;
+                }
+                h3 {
+                    font-size: 15px;
+                }
+            }
         }
     }
 </style>
