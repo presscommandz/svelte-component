@@ -4,6 +4,7 @@ import alias from "@rollup/plugin-alias"
 import pkg from "./package.json"
 import autoPreprocess from "svelte-preprocess"
 import typescript from "@rollup/plugin-typescript"
+import image from "@rollup/plugin-image"
 import css from "rollup-plugin-css-only"
 
 const name = pkg.name
@@ -27,8 +28,10 @@ export default {
         alias({
             resolve: [".js", ".ts", ".svelte"],
             entries: {
-                "@Promotion": "src/Promotion"
+                "@Promotion": "src/Promotion",
+                "@resources": "src/resources"
             }
-        })
+        }),
+        image()
     ]
 }

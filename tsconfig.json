@@ -5,7 +5,8 @@
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
         "paths": {
-            "@Promotion/*": ["src/Promotion/*"]
+            "@Promotion/*": ["src/Promotion/*"],
+            "@resources/*": ["src/resources/*"]
         },
         "declaration": true,
         "declarationDir": "lib",

@@ -29,6 +29,7 @@
     },
     "homepage": "https://github.com/presscommandz/svelte-component#readme",
     "dependencies": {
+        "@rollup/plugin-image": "^2.1.0",
         "node-sass": "^6.0.1",
         "prettier": "^2.3.2",
         "sass": "^1.36.0",
