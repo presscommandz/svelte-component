@@ -61,6 +61,7 @@ export default class PromotionViewModel {
             if (isSwipable) {
                 this.swiperController = new Swiper(".mySwiper", {
                     centeredSlides: true,
+                    initialSlide: 1,
                     pagination: {
                         el: document.querySelector(
                             ".swiper-pagination"
