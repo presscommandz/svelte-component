@@ -12,7 +12,6 @@
         width: 220px !important;
         margin: 30px 15px;
         perspective: 600px;
-        transition: 10s;
     }
 
     .card {
@@ -24,6 +23,7 @@
         position: relative;
         box-shadow: 0px 2px 20px 2px #d3cfcf;
         border-radius: 10px;
+        -webkit-user-select: none;
     }
 
     .isFlipped {
@@ -90,11 +90,6 @@
     .card__face--back {
         background: transparent;
         transform: rotateY(180deg);
-    }
-    @media (max-width: 1023px) and (min-width: 768px) {
-        .scene {
-            margin: 0 15px;
-        }
     }
     @media (max-width: 425px) {
         .card__face {

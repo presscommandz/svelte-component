@@ -52,25 +52,34 @@
         background-color: var(--bgColor);
         .header {
             text-align: center;
-            h1 {
-                font-size: 64px;
+            .title {
+                font-size: 48px;
                 margin-block-start: 0.3em;
                 color: #4fb6e0;
                 font-weight: 100;
             }
-            h2 {
-                font-size: 40px;
+            .subtitle {
+                font-size: 24px;
                 margin-block-end: 0.3em;
                 font-weight: 100;
             }
-            h3 {
+            .note {
                 color: #a7acb9;
                 font-weight: 100;
                 width: 320px;
+                margin-block-start: 0.3em;
                 word-wrap: break-word;
                 margin-left: auto;
                 margin-right: auto;
             }
+        }
+        .pricing {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
     .box {
@@ -131,12 +140,7 @@
         -ms-transform: translateX(26px);
         transform: translateX(26px);
     }
-    .container .pricing {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-    }
+
     .swiper-container {
         width: 100%;
         height: 100%;
@@ -151,28 +155,16 @@
         height: 20px;
         margin: 5px;
     }
-    @media (max-width: 1023px) {
+    @media (max-width: 415px) {
         .container {
             .header {
-                h1 {
-                    font-size: 48px;
+                .title {
+                    font-size: 40px;
                 }
-                h2 {
-                    font-size: 24px;
+                .subtitle {
+                    font-size: 18px;
                 }
-            }
-        }
-    }
-    @media (width: 320px) {
-        .container {
-            .header {
-                h1 {
-                    font-size: 36px;
-                }
-                h2 {
-                    font-size: 20px;
-                }
-                h3 {
+                .note {
                     font-size: 15px;
                 }
             }
@@ -184,9 +176,9 @@
 
 <div class="container" style="--bgColor:{bgColor};">
     <div class="header">
-        <h2>{viewModel.subTitle}</h2>
-        <h1>{viewModel.title}</h1>
-        <h3>{viewModel.note}</h3>
+        <h2 class="subtitle">{viewModel.subTitle}</h2>
+        <h1 class="title">{viewModel.title}</h1>
+        <h3 class="note">{viewModel.note}</h3>
     </div>
     <div class="box">
         <span class="monthly">monthly</span>
