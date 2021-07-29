@@ -1,5 +1,7 @@
 <script lang="ts">
     import type PlanViewModel from "@Promotion/Plan/PlanViewModel"
+    import checked from "@resources/checked.png"
+    import unchecked from "@resources/unchecked.png"
     export let isFlipped = false
     export let viewModel: PlanViewModel
     export let onClick = _ => {}
@@ -64,6 +66,14 @@
             margin-bottom: 30px;
             margin-left: 45px;
             font-size: 12px;
+            span {
+                display: inline-flex;
+                img {
+                    width: 12px;
+                    height: 12px;
+                    margin: 2px;
+                }
+            }
         }
         .btn {
             border: none;
@@ -73,7 +83,8 @@
             border-radius: 10px;
             font-size: 24px;
             color: white;
-            font-weight: 500;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
     }
 
@@ -118,11 +129,13 @@
                 {viewModel.price}$<span class="time">/ month</span>
             </h1>
             <div class="feature">
-                {#each viewModel.advances as advance}
-                    <span>+ {advance}</span>
-                {/each}
                 {#each viewModel.drawbacks as drawback}
-                    <span>- {drawback}</span>
+                    <span
+                        ><img src={unchecked} alt="unchecked" />{drawback}</span
+                    >
+                {/each}
+                {#each viewModel.advances as advance}
+                    <span><img src={checked} alt="checked" /> {advance}</span>
                 {/each}
             </div>
             <button class="btn" on:click={onClick}>
@@ -135,11 +148,13 @@
                 {viewModel.price}$<span class="time">/ month</span>
             </h1>
             <div class="feature">
-                {#each viewModel.advances as advance}
-                    <span>+ {advance}</span>
-                {/each}
                 {#each viewModel.drawbacks as drawback}
-                    <span>- {drawback}</span>
+                    <span
+                        ><img src={unchecked} alt="unchecked" />{drawback}</span
+                    >
+                {/each}
+                {#each viewModel.advances as advance}
+                    <span><img src={checked} alt="checked" /> {advance}</span>
                 {/each}
             </div>
             <button class="btn" on:click={onClick}>

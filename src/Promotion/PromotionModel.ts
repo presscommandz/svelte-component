@@ -14,6 +14,6 @@ export default class PromotionModel {
         this.note =
             note || "Flexible pricing options for freelancers and design teams"
         this.type = type || "primary"
-        this.listCard = listCard.map(i => new PlanModel({ i })) || []
+        this.listCard = listCard.map(i => new PlanModel(i)) || []
     }
 }

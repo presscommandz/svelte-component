@@ -14,6 +14,7 @@ export default class PromotionViewModel {
     windowWidth: Writable<number> = writable(window.innerWidth)
 
     constructor(data: any) {
+        console.log(data)
         this.promotionData = new PromotionModel(data)
         this.onFlip = this.onFlip.bind(this)
     }

@@ -3,13 +3,13 @@ export default class PlanModel {
     price: number
     drawbacks: Array<string>
     advances: Array<string>
-    textButton: string
+    button: string
     constructor(data) {
-        const { title, price, drawbacks, advances, textButton } = data
+        const { title, price, drawbacks, advances, button } = data
         this.title = title || "hello"
         this.price = price || 0
-        this.drawbacks = drawbacks || ["abc1", "abc2"]
-        this.advances = advances || ["xyz"]
-        this.textButton = textButton || "Free"
+        this.drawbacks = drawbacks || []
+        this.advances = advances || []
+        this.button = button || "Free"
     }
 }

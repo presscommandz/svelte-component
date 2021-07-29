@@ -24,6 +24,6 @@ export default class PlanViewModel {
     }
 
     get text(): string {
-        return this.planData.textButton
+        return this.planData.button
     }
 }
