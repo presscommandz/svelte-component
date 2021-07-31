@@ -1,21 +1,20 @@
 import { Writable, writable, get } from "svelte/store"
 import Swiper from "swiper/bundle"
-import PromotionModel from "@Promotion/PromotionModel"
-import type PlanModel from "@Promotion/Plan/PlanModel"
-import PlanViewModel from "@Promotion/Plan/PlanViewModel"
+import type PromotionModel from "@Promotion/PromotionModel"
+import type PricingPlanModel from "@Promotion/Plan/PricingPlanModel"
+import PricingPlanViewModel from "@Promotion/Plan/PricingPlanViewModel"
 import { tick } from "svelte"
 
 export default class PromotionViewModel {
     private swiperController: Swiper
-    private promotionData: any = {}
+    private promotionData: PromotionModel
 
     isFlipped: Writable<boolean> = writable(false)
     isSwiper: Writable<boolean> = writable(false)
     windowWidth: Writable<number> = writable(window.innerWidth)
 
-    constructor(data: any) {
-        console.log(data)
-        this.promotionData = new PromotionModel(data)
+    constructor(data: PromotionModel) {
+        this.promotionData = data
         this.onFlip = this.onFlip.bind(this)
     }
 
@@ -31,11 +30,11 @@ export default class PromotionViewModel {
         return this.promotionData.note
     }
 
-    get listCard(): PlanModel[] {
-        return this.promotionData.listCard
+    get listPricingPlanCard(): PricingPlanModel[] {
+        return this.promotionData.listPricingPlanCard
     }
 
-    private createBreakPoint(): {} {
+    private getBreakPointOfSwiper(): {} {
         let breakpoints = {}
         for (let i = 320; i <= 767; i++) {
             breakpoints[i] = {
@@ -54,7 +53,7 @@ export default class PromotionViewModel {
             }
         })
 
-        let listBreakpoints = this.createBreakPoint()
+        let breakpoints = this.getBreakPointOfSwiper()
 
         this.isSwiper.subscribe(async isSwipable => {
             await tick()
@@ -68,7 +67,7 @@ export default class PromotionViewModel {
                         ) as HTMLElement,
                         clickable: true
                     },
-                    breakpoints: listBreakpoints
+                    breakpoints: breakpoints
                 })
             } else {
                 this.swiperController?.destroy()
@@ -83,8 +82,8 @@ export default class PromotionViewModel {
         this.isFlipped.set(!get(this.isFlipped))
     }
 
-    createPlanViewModel(data: PlanModel): PlanViewModel {
-        let planViewModel = new PlanViewModel(data)
+    createPricingPlanViewModel(data: PricingPlanModel): PricingPlanViewModel {
+        let planViewModel = new PricingPlanViewModel(data)
         return planViewModel
     }
 }
