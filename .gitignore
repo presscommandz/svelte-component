@@ -122,3 +122,5 @@ lib
 
 # Example directories
 example/svelte/public/build
+
+.DS_Store

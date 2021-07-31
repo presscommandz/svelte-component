@@ -4,6 +4,10 @@
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
+        "paths": {
+            "@Promotion/*": ["src/Promotion/*"],
+            "@resources/*": ["src/resources/*"]
+        },
         "declaration": true,
         "declarationDir": "lib",
         "sourceMap": true,
@@ -18,7 +22,7 @@
         "resolveJsonModule": true,
         "rootDir": "src",
         "skipLibCheck": true,
-        "strict": true,
+        "strict": false,
         "types": ["node", "svelte"]
     },
     "include": ["src/**/*"],

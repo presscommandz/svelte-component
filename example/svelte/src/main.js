@@ -1,4 +1,5 @@
 import "./global.css"
+import "@presscommandz/svelte-component/lib/bundle.css"
 
 import App from "./App.svelte"
 

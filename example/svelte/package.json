@@ -2,6 +2,7 @@
     "name": "svelte-app",
     "version": "1.0.0",
     "devDependencies": {
+        "@rollup/plugin-typescript": "^8.2.3",
         "cross-env": "^7.0.3",
         "css-loader": "^5.0.1",
         "mini-css-extract-plugin": "^1.3.4",
@@ -17,6 +18,6 @@
         "dev": "webpack serve --content-base public"
     },
     "dependencies": {
-        "@presscommandz/svelte-component": "^0.2.0"
+        "@presscommandz/svelte-component": "../../"
     }
 }
