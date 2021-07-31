@@ -1,7 +1,7 @@
 interface IPricingPlan {
     planTitle: NonNullable<string>
     planPrice: NonNullable<number>
-    unit: NonNullable<string>
+    unit: string
     drawbacks: string[]
     advances: string[]
     textButton: string

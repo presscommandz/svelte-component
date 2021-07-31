@@ -28,7 +28,6 @@
         planTitle: "Pro",
         textButton: "Get pro",
         planPrice: 99,
-        unit: "$",
         drawbacks: ["Limitted diagram", "Limitted change theme"],
         advances: [
             "1000 nodes per diagram",
@@ -43,7 +42,6 @@
         planTitle: "Premium",
         textButton: "Get premium",
         planPrice: 199,
-        unit: "$",
         advances: [
             "Unlimitted diagram",
             "Unlimmited change theme",
