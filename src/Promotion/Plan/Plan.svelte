@@ -1,10 +1,18 @@
 <script lang="ts">
-    import type PlanViewModel from "@Promotion/Plan/PlanViewModel"
+    import type PricingPlanViewModel from "@Promotion/Plan/PricingPlanViewModel"
     import checked from "@resources/checked.png"
     import unchecked from "@resources/unchecked.png"
+    import { createEventDispatcher } from "svelte"
+
+    const dispatch = createEventDispatcher()
+    function getPlanInfomation() {
+        dispatch("getPlanInformation", {
+            planTitle: viewModel.planTitle
+        })
+    }
+
     export let isFlipped = false
-    export let viewModel: PlanViewModel
-    export let onClick = _ => {}
+    export let viewModel: PricingPlanViewModel
     export let h: number = 330
     let height = h ? `${h}px` : "330px"
 </script>
@@ -25,9 +33,7 @@
         position: relative;
         box-shadow: 0px 2px 20px 2px #d3cfcf;
         border-radius: 10px;
-        -webkit-user-select: none;
     }
-
     .isFlipped {
         transform: rotateY(180deg);
     }
@@ -121,12 +127,14 @@
     }
 </style>
 
-<div class="scene scene--card" style="height: {height}">
+<div class="scene scene--card unselectable" style="height: {height}">
     <div class="card" class:isFlipped>
         <div class="card__face card__face--front">
-            <h2 class="title">{viewModel.title}</h2>
+            <h2 class="title">{viewModel.planTitle}</h2>
             <h1 class="cost">
-                {viewModel.price}$<span class="time">/ month</span>
+                {viewModel.planPrice}{viewModel.unit}<span class="time"
+                    >/ month</span
+                >
             </h1>
             <div class="feature">
                 {#each viewModel.drawbacks as drawback}
@@ -138,14 +146,16 @@
                     <span><img src={checked} alt="checked" /> {advance}</span>
                 {/each}
             </div>
-            <button class="btn" on:click={onClick}>
-                {viewModel.text}
+            <button class="btn" on:click={getPlanInfomation}>
+                {viewModel.textButton}
             </button>
         </div>
         <div class="card__face card__face--back">
-            <h2 class="title">{viewModel.title}(year)</h2>
+            <h2 class="title">{viewModel.planTitle}(year)</h2>
             <h1 class="cost">
-                {viewModel.price}$<span class="time">/ month</span>
+                {viewModel.planPrice}{viewModel.unit}<span class="time"
+                    >/ month</span
+                >
             </h1>
             <div class="feature">
                 {#each viewModel.drawbacks as drawback}
@@ -157,8 +167,8 @@
                     <span><img src={checked} alt="checked" /> {advance}</span>
                 {/each}
             </div>
-            <button class="btn" on:click={onClick}>
-                {viewModel.text}
+            <button class="btn" on:click={getPlanInfomation}>
+                {viewModel.textButton}
             </button>
         </div>
     </div>

@@ -43,6 +43,9 @@
 </script>
 
 <style lang="scss">
+    :global(.unselectable) {
+        -webkit-user-select: none;
+    }
     .container {
         display: flex;
         justify-content: center;
@@ -174,7 +177,7 @@
 
 <svelte:window bind:innerWidth={$windowWidth} />
 
-<div class="container" style="--bgColor:{bgColor};">
+<div class="container unselectable" style="--bgColor:{bgColor};">
     <div class="header">
         <h2 class="subtitle">{viewModel.subTitle}</h2>
         <h1 class="title">{viewModel.title}</h1>
@@ -199,12 +202,15 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                {#each viewModel.listCard as data}
+                {#each viewModel.listPricingPlanCard as data}
                     <div class="swiper-slide">
                         <Plan
                             isFlipped={$isFlipped}
-                            viewModel={viewModel.createPlanViewModel(data)}
+                            viewModel={viewModel.createPricingPlanViewModel(
+                                data
+                            )}
                             h={heightOfCard}
+                            on:getPlanInformation
                         />
                     </div>
                 {/each}
@@ -214,11 +220,12 @@
         </div>
     {:else}
         <div class="pricing">
-            {#each viewModel.listCard as data}
+            {#each viewModel.listPricingPlanCard as data}
                 <Plan
                     isFlipped={$isFlipped}
-                    viewModel={viewModel.createPlanViewModel(data)}
+                    viewModel={viewModel.createPricingPlanViewModel(data)}
                     h={heightOfCard}
+                    on:getPlanInformation
                 />
             {/each}
         </div>
